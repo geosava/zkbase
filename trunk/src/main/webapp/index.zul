@@ -1,0 +1,42 @@
+<?page id="testZul" title=" New ZUL Title" cacheable="false" 
+	language="xul/html" zscriptLanguage="Java" contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+	<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+	<window title="Add a User" border="normal"
+		apply="${userController}">
+
+		<vbox>
+			user name:
+			<textbox id="userName" />
+			first name:
+			<textbox id="firstName" />
+			last name:
+			<textbox id="lastName" />
+			password:
+			<textbox id="password" />
+			email:
+			<textbox id="email" />
+		</vbox>
+		<button id="add" label="Add" width="36px" height="24px" />
+	</window>
+
+	<window title="Users" border="normal">
+		<zscript>
+		java.util.List users = userController.getList();
+		</zscript>
+		<listbox>
+			<listitem forEach="${users}" value="${each}">
+				<listcell label="${each.userName}" />
+				<listcell label="${each.firstName}" />
+				<listcell label="${each.lastName}" />
+				<listcell label="${each.email}" />
+				<listcell label="${each.password}" />
+			</listitem>
+		</listbox>
+
+	</window>
+</zk>
