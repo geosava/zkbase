@@ -21,7 +21,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityNotFoundException;
 import javax.persistence.NoResultException;
 import javax.persistence.NonUniqueResultException;
 import javax.persistence.PersistenceContext;
@@ -36,12 +35,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class BasicDao {
 
-	private EntityManager entityManager;
-
 	@PersistenceContext
-	public void setEntityManager(EntityManager entityManager) {
-		this.entityManager = entityManager;
-	}
+	private EntityManager entityManager;
 
 	/**
 	 * Retrieves a non-paged query. Use with care, this method could potentially
@@ -53,6 +48,18 @@ public class BasicDao {
 		setParameters(query, params);
 		return query.getResultList();
 	}
+	
+	/**
+	 * Retrieves a paged query.
+	 */
+	@SuppressWarnings("unchecked")
+	public <T> List<T> find(String queryString, int firstResult, int maxResults, Object... params) {
+		Query query = entityManager.createQuery(queryString);
+		query.setFirstResult(firstResult);
+		query.setMaxResults(maxResults);
+		setParameters(query, params);
+		return query.getResultList();
+	}	
 
 	/**
 	 * @return a single object that satisfies the query.
@@ -107,15 +114,26 @@ public class BasicDao {
 	}
 
 	@SuppressWarnings("unchecked")
+	public <T> List<T> findAll(Class<T> clazz, int firstResult, int maxResults) {
+		return (List<T>) find("from " + clazz.getName(), firstResult, maxResults);
+	}
+	
+	@SuppressWarnings("unchecked")
 	public <T> List<T> findAll(Class<T> clazz) {
 		return (List<T>) find("from " + clazz.getName());
 	}
+	
+	public <T> Long count(Class<T> clazz) {
+		Query query = entityManager.createQuery("SELECT COUNT(o) FROM " + clazz.getName() + " o");
+		return (Long)query.getSingleResult();
+	}
+	
 
 	public <T> T find(Class<T> clazz, Serializable id)
 			throws EntityNotFoundException {
 		T result = entityManager.find(clazz, id);
 		if (result == null) {
-			throw new EntityNotFoundException();
+			throw new EntityNotFoundException(clazz, id);
 		}
 		return result;
 	}
@@ -136,8 +154,10 @@ public class BasicDao {
 	 * Retrieves a non-paged query
 	 */
 	@SuppressWarnings("unchecked")
-	public <T> List<T> findNamedQuery(final String namedQuery, Object... params) {
+	public <T> List<T> findNamedQuery(final String namedQuery, int firstResult, int maxResult, Object... params) {
 		Query query = entityManager.createNamedQuery(namedQuery);
+		query.setFirstResult(firstResult);
+		query.setMaxResults(maxResult);
 		setParameters(query, params);
 		return query.getResultList();
 	}

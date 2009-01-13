@@ -1,13 +1,21 @@
 package org.zkbase.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
+
+import org.springframework.security.GrantedAuthority;
 
 @Entity
-public class Role {
-    private Long id;
+public class Role implements Serializable, GrantedAuthority {
+
+	private static final long serialVersionUID = -3415699490636341355L;
+	
+	private Long id;
     private String name;
     private String description;
     
@@ -29,5 +37,31 @@ public class Role {
 	}
 	public void setDescription(String description) {
 		this.description = description;
-	}    
+	}
+	@Override
+	@Transient
+	public String getAuthority() {
+		return this.getName();
+	}
+	
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Role)) {
+            return false;
+        }
+
+        final Role role = (Role) o;
+        
+        if (role.name == null || name == null)
+        	return false;
+        
+        return name.equals(role.name);
+    }
+    
+	@Override
+    public int compareTo(Object o) {
+        return (equals(o) ? 0 : -1);
+    }    
 }
