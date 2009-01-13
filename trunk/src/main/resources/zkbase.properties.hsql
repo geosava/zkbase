@@ -1,4 +1,4 @@
-jdbc.url=jdbc:hsqldb:file:zktodo2.dat
+jdbc.url=jdbc:hsqldb:file:zkbase.dat
 jdbc.username=sa
 jdbc.password=
 jdbc.driver=org.hsqldb.jdbcDriver

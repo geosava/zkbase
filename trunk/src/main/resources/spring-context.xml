@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="
 	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
     http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd
 	">
 
-	<!-- 
-    JPA config   
-    -->
+	<context:annotation-config />
+
+	<!--  JPA config  -->
 
 	<tx:annotation-driven />
 
@@ -39,11 +41,14 @@
 	<!-- DAOs -->
 	<bean id="basicDao" class="org.zkbase.dao.BasicDao" />
 
-	<bean id="userService" class="org.zkbase.service.UserService"
-		p:basicDao-ref="basicDao" />
-		
-	<bean id="userController" class="org.zkbase.webapp.controller.UserController" 
-		p:userService-ref="userService" scope="prototype"
-	/>		
+	<bean id="userService" class="org.zkbase.service.UserService" />
+
+	<bean id="userAuthenticationDetailsService" class="org.zkbase.service.UserAuthenticationDetailsService" />
+
+	<bean id="roleService" class="org.zkbase.service.RoleService" />
+
+	<bean id="userController" class="org.zkbase.webapp.controller.UserController"
+		scope="prototype" />
+
 
 </beans>

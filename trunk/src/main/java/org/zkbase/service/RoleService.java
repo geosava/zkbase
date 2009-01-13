@@ -6,6 +6,5 @@ public class RoleService extends GenericService<Role> {
 
 	public RoleService() {
 		super(Role.class);
-
 	}
 }

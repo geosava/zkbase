@@ -7,5 +7,5 @@
 
 	<!-- TODO: using Hypersonic DB so will use LOCAL at the moment. Derby might be a suitable JTA source -->
     <persistence-unit name="zkbase" transaction-type="RESOURCE_LOCAL" />
-
+	
 </persistence>
