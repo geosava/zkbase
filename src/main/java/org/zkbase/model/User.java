@@ -21,7 +21,9 @@ import org.springframework.security.userdetails.UserDetails;
 @NamedQueries( {
 		@NamedQuery(name = "User.count", query = "SELECT COUNT(u) FROM User u"),
 		@NamedQuery(name = "User.findByName", query = "SELECT u FROM User u WHERE u.username = ?1"),
-		@NamedQuery(name = "User.findByNameLike", query = "SELECT u FROM User u WHERE u.username LIKE ?1") })
+		@NamedQuery(name = "User.findByNameLike", query = "SELECT u FROM User u WHERE u.username LIKE ?1"), 
+		@NamedQuery(name = "User.findByExample", query = "SELECT u FROM User u WHERE u.username LIKE ?1 AND u.firstName LIKE ?2")
+		})
 public class User implements Serializable, UserDetails {
 
 	private static final long serialVersionUID = -3844753892108734066L;

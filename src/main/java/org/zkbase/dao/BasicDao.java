@@ -124,7 +124,7 @@ public class BasicDao {
 	}
 	
 	public <T> Long count(Class<T> clazz) {
-		Query query = entityManager.createQuery("SELECT COUNT(o) FROM " + clazz.getName() + " o");
+		Query query = entityManager.createQuery("SELECT COUNT(o) FROM " + clazz.getName() + " o");		
 		return (Long)query.getSingleResult();
 	}
 	

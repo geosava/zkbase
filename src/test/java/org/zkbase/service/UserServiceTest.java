@@ -116,4 +116,16 @@ public class UserServiceTest extends AbstractJpaTests {
 		assertEquals(u1, u2);
 	}	
 	
+	public void testFindByExample() throws Exception {
+		insertUsers();		
+		User user = new User();
+		user.setUsername("user");
+		List<User> ul = userService.findByExample(user, 0, 100);
+		assertTrue(ul.size() > 1);
+		
+		user.setFirstName("firstName");
+		ul = userService.findByExample(user, 0, 100);
+		assertTrue(ul.size() > 1);
+	}
+	
 }
