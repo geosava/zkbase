@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zk xmlns="http://www.zkoss.org/2005/zul">
 	<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
-
+   <zscript><![CDATA[
+        Comparator cmpUsername_A = new org.zkbase.webapp.controller.UserComparator (true,0);
+        Comparator cmpUsername_D = new org.zkbase.webapp.controller.UserComparator (false,0); 
+        Comparator cmpFirstName_A = new org.zkbase.webapp.controller.UserComparator (true,1);
+        Comparator cmpFirstName_D = new org.zkbase.webapp.controller.UserComparator (false,1);
+    ]]></zscript>
 	<window title="Init Form" apply="${userController}">
+		Search: <textbox id="searchField" width="200px" /><button id="search" label="Search" />
 		<paging id="pageUsers" pageSize="3" />
 		<listbox id="userListAll"   >
 			<listhead>
-				<listheader label="Username" />
-				<listheader label="First name" />
+				<listheader label="Username" sortAscending="${cmpUsername_A}" sortDescending="${cmpUsername_D}"/>
+				<listheader label="First name" sortAscending="${cmpFirstName_A}" sortDescending="${cmpFirstName_D}"/>
 				<listheader label="Last name" />
 				<listheader label="Email" />
 				<listheader label="Roles" />

@@ -1,5 +1,7 @@
 package org.zkbase.webapp.controller;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -31,6 +33,7 @@ public class UserController extends GenericForwardComposer implements
 	protected Textbox lastName;
 	protected Textbox password;
 	protected Textbox email;
+	protected Textbox searchField;
 	protected Paging pageUsers;
 	protected Listbox userListAll;
 	protected ListModelList listModelList;
@@ -40,38 +43,51 @@ public class UserController extends GenericForwardComposer implements
 
 	@Autowired
 	RoleService roleService;
-
-	public void onClick$init(Event e) {
-
-		// insert roles:
-		Role r1 = new Role();
-		r1.setName("ROLE_ADMIN");
-		r1.setDescription("Administrator priviledges");
-		Role r2 = new Role();
-		r2.setName("ROLE_USER");
-		r2.setDescription("Common user priviledges");
-		roleService.persist(r1);
-		roleService.persist(r2);
-
-		// set up admin account:
-		User u = new User();
-		u.setFirstName("admin");
-		u.setLastName("admin");
-		u.setPassword("admin");
-		u.setUsername("admin");
-		u.setEmail("admin@zkbase.org");
+	
+	public void createDemoAccount(String name, Set<Role> roles)  {
+				User u = new User();
+		u.setFirstName(name);
+		u.setLastName(name);
+		u.setPassword(name);
+		u.setUsername(name);
+		u.setEmail(name + "@zkbase.org");
 		u.setAccountExpired(false);
 		u.setAccountLocked(false);
 		u.setCredentialsExpired(false);
 		u.setEnabled(true);
 
+		u.setRoles(roles);
+	
+		userService.persist(u);
+	}
+
+	public void onClick$search(Event e) {
+		String query = searchField.getValue();
+		searchField.invalidate();
+	}
+	
+	public void onClick$init(Event e) {
+
+		// insert roles:
+		Role r1 = new Role();
+		r1.setName("ROLE_USER");		
+		r1.setDescription("Administrator priviledges");
+		Role r2 = new Role();
+		r2.setName("ROLE_ADMIN");
+		r2.setDescription("Common user priviledges");
+		roleService.persist(r1);
+		roleService.persist(r2);
+
 		Set<Role> roles = new HashSet<Role>();
 		roles.add(r1);
-		roles.add(r2);
-		u.setRoles(roles);
+		// set up users accounts
+		
+		for (int i = 1; i <= 100; ++i)
+			this.createDemoAccount("user" + i, roles);
 
-		// insert admin account:
-		userService.persist(u);
+		roles.add(r2);
+		// set up admin account:
+		this.createDemoAccount("admin", roles);
 		
 		buildUserList();
 	}
@@ -153,3 +169,18 @@ public class UserController extends GenericForwardComposer implements
 		new Listcell(this.getUserRolesString(user)).setParent(listItem);
 	}
 }
+
+//class UserListModel extends ListModelList {
+//
+//	private static final long serialVersionUID = -8699018351228988340L;
+//	
+//	@SuppressWarnings("unchecked")
+//	@Override
+//	public void sort(Comparator cmpr, boolean ascending) {
+//        Collections.sort(getInnerList() , cmpr);
+//        fireEvent(org.zkoss.zul.event.ListDataEvent.CONTENTS_CHANGED, -1, -1);
+//	}
+//
+//}
+
+
