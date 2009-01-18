@@ -70,6 +70,7 @@ public class UserServiceTest extends AbstractJpaTests {
 	
 	public void testFindByUserName() throws Exception {
 		insertUsers();		
+		List<User> ul = userService.findAll();
 		User u = userService.findByUserName("username3");
 		assertNotNull(u);
 		assertTrue(u.getUsername().equals("username3"));

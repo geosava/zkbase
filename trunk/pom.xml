@@ -21,13 +21,13 @@
 		<commons-fileupload.version>1.2.1</commons-fileupload.version>
 		<commons-io.version>1.4</commons-io.version>		
 	</properties>
-	<dependencies>
+	<dependencies><!--
 		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>oracle-driver</artifactId>
 			<version>14</version>
 		</dependency>
-		<dependency>
+		--><dependency>
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
 			<version>1.0.4</version>
