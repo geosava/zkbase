@@ -33,22 +33,22 @@ public abstract class GenericService<T> {
 	}
 
 	@SuppressWarnings("unchecked")
-	@Transactional(readOnly=true)
+	@Transactional(readOnly=true,propagation = Propagation.REQUIRED)
 	public List<T> findAll(){
 		List<?> objects = this.basicDao.findAll(objectClass);
 		return(List<T>) objects;
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Transactional(readOnly=true)
+	@Transactional(readOnly=true,propagation = Propagation.REQUIRED)
 	public List<T> findAll(int firstResult, int maxResults){
 		List<?> objects = this.basicDao.findAll(objectClass, firstResult, maxResults);
 		return(List<T>) objects;
 	}	
 	
 	@SuppressWarnings("unchecked")
-	@Transactional(readOnly=true)
-	protected <T> List<T> findByNamedQuery(String namedQuery, int firstResult, int maxResults, Object... params) throws EntityNotFoundException{
+	@Transactional(readOnly=true,propagation = Propagation.REQUIRED)
+	protected <T> List<T> findByNamedQuery(String namedQuery, int firstResult, int maxResults, Object... params) {
 		return this.basicDao.findNamedQuery(namedQuery, firstResult, maxResults, params);		
 	}
 	

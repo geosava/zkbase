@@ -26,6 +26,7 @@ import javax.persistence.NonUniqueResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.springframework.orm.jpa.JpaOperations;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -44,6 +45,7 @@ public class BasicDao {
 	 */
 	@SuppressWarnings("unchecked")
 	public <T> List<T> find(String queryString, Object... params) {
+		//queryString += " order by firstName desc";
 		Query query = entityManager.createQuery(queryString);
 		setParameters(query, params);
 		return query.getResultList();
@@ -155,9 +157,10 @@ public class BasicDao {
 	 */
 	@SuppressWarnings("unchecked")
 	public <T> List<T> findNamedQuery(final String namedQuery, int firstResult, int maxResult, Object... params) {
+		
 		Query query = entityManager.createNamedQuery(namedQuery);
 		query.setFirstResult(firstResult);
-		query.setMaxResults(maxResult);
+		query.setMaxResults(maxResult);		
 		setParameters(query, params);
 		return query.getResultList();
 	}

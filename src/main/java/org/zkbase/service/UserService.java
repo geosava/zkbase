@@ -22,8 +22,7 @@ public class UserService extends GenericService<User> {
 				maxResults, username + "%");
 	}
 
-	public List<User> findByExample(User user, int firstResult, int maxResults)
-			throws EntityNotFoundException {
+	public List<User> findByExample(User user, int firstResult, int maxResults) {
 		if (user.getFirstName() == null)
 			user.setFirstName("");
 		return super.findByNamedQuery("User.findByExample", firstResult,
