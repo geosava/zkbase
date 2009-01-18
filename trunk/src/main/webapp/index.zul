@@ -1,37 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zk xmlns="http://www.zkoss.org/2005/zul">
-	<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
-   <zscript><![CDATA[
-        Comparator cmpUsername_A = new org.zkbase.webapp.controller.UserComparator (true,0);
-        Comparator cmpUsername_D = new org.zkbase.webapp.controller.UserComparator (false,0); 
-        Comparator cmpFirstName_A = new org.zkbase.webapp.controller.UserComparator (true,1);
-        Comparator cmpFirstName_D = new org.zkbase.webapp.controller.UserComparator (false,1);
-    ]]></zscript>
-	<window title="Init Form" apply="${userController}">
-		Search: <textbox id="searchField" width="200px" /><button id="search" label="Search" />
-		<paging id="pageUsers" pageSize="3" />
-		<listbox id="userListAll"   >
-			<listhead>
-				<listheader label="Username" sortAscending="${cmpUsername_A}" sortDescending="${cmpUsername_D}"/>
-				<listheader label="First name" sortAscending="${cmpFirstName_A}" sortDescending="${cmpFirstName_D}"/>
-				<listheader label="Last name" />
-				<listheader label="Email" />
-				<listheader label="Roles" />
-			</listhead>
-		</listbox>
-		<button id="init" label="Init" width="36px" height="24px" />
-		<vbox>
-			user name:
-			<textbox id="username" />
-			first name:
-			<textbox id="firstName" />
-			last name:
-			<textbox id="lastName" />
-			password:
-			<textbox id="password" />
-			email:
-			<textbox id="email" />
-		</vbox>
-		<button id="add" label="Add" width="36px" height="24px" />
-	</window>
+	<div>go to the application:</div>
+	<div>
+		<toolbarbutton href="main.zul" label="->ZK BASE" />
+	</div>
 </zk>
