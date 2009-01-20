@@ -7,8 +7,11 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.security.userdetails.UserDetails;
 import org.springframework.security.userdetails.UserDetailsService;
 import org.springframework.security.userdetails.UsernameNotFoundException;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.zkbase.model.User;
 
+@Transactional(readOnly=true,propagation = Propagation.REQUIRED)
 public class UserAuthenticationDetailsService extends GenericService<User>
 		implements UserDetailsService {
 

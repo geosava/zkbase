@@ -62,26 +62,24 @@ public class UserController extends GenericForwardComposer implements
 		userService.persist(u);
 	}
 
-	public String getAha() {
-		return "xxx";
-	}
-
-	public void setAha(String aha) {
-		System.out.println(aha);
-	}
-
 	public void onClick$search(Event e) {
-		// String query = searchField.getValue();
-		AnnotateDataBinder binder = (AnnotateDataBinder) searchField.getPage()
-				.getVariable("binder");
-		binder.loadComponent(searchField);
-
+		userService.findAll(0, 100);
 		User example = new User();
 		example.setUsername("user");
+		example.setFirstName("a");
+		userService.findAll();
 		List<User> result = userService.findByExample(example, 0, 200);
-		listModelList.clear();
-		listModelList.addAll(result);
-		binder.loadComponent(userListAll);
+		// String query = searchField.getValue();
+//		AnnotateDataBinder binder = (AnnotateDataBinder) searchField.getPage()
+//				.getVariable("binder");
+//		binder.loadComponent(searchField);
+
+//		User example = new User();
+//		example.setUsername("user");
+//		List<User> result = userService.findByExample(example, 0, 200);
+//		listModelList.clear();
+//		listModelList.addAll(result);
+		//binder.loadComponent(userListAll);
 	}
 
 	public void onClick$init(Event e) {

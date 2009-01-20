@@ -10,7 +10,7 @@
 	<!-- BEGIN: Authentication -->
 	<sec:http auto-config="true">
 		<sec:intercept-url pattern="/portal/**"
-			access="ROLE_CUSTOMER, ROLE_SALES" />
+			access="ROLE_ADMIN, ROLE_USER" />
 		<sec:form-login login-page="/login.jsp" />
 	</sec:http>
 

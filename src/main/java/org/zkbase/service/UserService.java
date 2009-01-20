@@ -2,10 +2,12 @@ package org.zkbase.service;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.zkbase.dao.EntityNotFoundException;
 import org.zkbase.model.User;
 
+@Transactional(readOnly=true,propagation = Propagation.REQUIRED)
 public class UserService extends GenericService<User> {
 
 	public UserService() {
@@ -21,7 +23,7 @@ public class UserService extends GenericService<User> {
 		return super.findByNamedQuery("User.findByNameLike", firstResult,
 				maxResults, username + "%");
 	}
-
+	
 	public List<User> findByExample(User user, int firstResult, int maxResults) {
 		if (user.getFirstName() == null)
 			user.setFirstName("");
