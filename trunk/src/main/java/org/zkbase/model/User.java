@@ -2,6 +2,7 @@ package org.zkbase.model;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -135,11 +136,14 @@ public class User implements Serializable, UserDetails {
 	@Override
 	@Transient
 	public GrantedAuthority[] getAuthorities() {
-		// TODO: load roles
-		Role[] r = new Role[1];
-		r[0] = new Role();
-		r[0].setName("ROLE_CUSTOMER");
-		return r;
+		Set<Role> roles = this.getRoles();		
+		Role[] ga = new Role[roles.size()];
+		
+		Iterator<Role> iter = roles.iterator();
+		int i = 0;
+		while (iter.hasNext())
+			ga[i++] = iter.next();
+		return ga;
 	}
 
 	@Override

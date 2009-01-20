@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.zkbase.dao.BasicDao;
 import org.zkbase.dao.EntityNotFoundException;
 
+@Transactional(readOnly=true,propagation = Propagation.REQUIRED)
 public abstract class GenericService<T> {
 	
 	private final Class<T> objectClass;
@@ -21,39 +22,33 @@ public abstract class GenericService<T> {
 	public BasicDao basicDao;
 	
 
-	@Transactional(readOnly=true)
 	public Long count() {
 		return this.basicDao.count(this.objectClass);
 	}
 	
-	@SuppressWarnings("unchecked")
-	@Transactional(readOnly=true)	
+	@SuppressWarnings("unchecked")	
 	public T findByID(Serializable id) throws EntityNotFoundException {
 		return basicDao.find(objectClass, id);
 	}
 
-	@SuppressWarnings("unchecked")
-	@Transactional(readOnly=true,propagation = Propagation.REQUIRED)
+	@SuppressWarnings("unchecked")	
 	public List<T> findAll(){
 		List<?> objects = this.basicDao.findAll(objectClass);
 		return(List<T>) objects;
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Transactional(readOnly=true,propagation = Propagation.REQUIRED)
 	public List<T> findAll(int firstResult, int maxResults){
 		List<?> objects = this.basicDao.findAll(objectClass, firstResult, maxResults);
 		return(List<T>) objects;
 	}	
 	
 	@SuppressWarnings("unchecked")
-	@Transactional(readOnly=true,propagation = Propagation.REQUIRED)
 	protected <T> List<T> findByNamedQuery(String namedQuery, int firstResult, int maxResults, Object... params) {
 		return this.basicDao.findNamedQuery(namedQuery, firstResult, maxResults, params);		
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Transactional(readOnly=true)
 	protected T findByNamedQuerySingle(String namedQuery, Object... params){
 		return (T) this.basicDao.findNamedQuerySingle(namedQuery, params);		
 	}
