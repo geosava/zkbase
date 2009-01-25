@@ -8,7 +8,7 @@
 	<name>zkbase</name>
 	<url>http://code.google.com/p/zkbase/</url>
 	<properties>
-		<zk.version>3.5.1</zk.version>
+		<zk.version>3.5.2</zk.version>
 		<zkel.version>1.0.1</zkel.version>
 		<spring.version>2.5.5</spring.version>
 		<spring-security.version>2.0.4</spring-security.version>

@@ -63,23 +63,15 @@ public class UserController extends GenericForwardComposer implements
 	}
 
 	public void onClick$search(Event e) {
-		userService.findAll(0, 100);
 		User example = new User();
-		example.setUsername("user");
-		example.setFirstName("a");
-		userService.findAll();
-		List<User> result = userService.findByExample(example, 0, 200);
-		// String query = searchField.getValue();
-//		AnnotateDataBinder binder = (AnnotateDataBinder) searchField.getPage()
-//				.getVariable("binder");
-//		binder.loadComponent(searchField);
-
-//		User example = new User();
-//		example.setUsername("user");
-//		List<User> result = userService.findByExample(example, 0, 200);
-//		listModelList.clear();
-//		listModelList.addAll(result);
-		//binder.loadComponent(userListAll);
+		example.setUsername("%" + searchField.getValue() + "%");
+		example.setFirstName("%" +searchField.getValue() + "%");
+		List<User> users = userService.findByExample(example, 0, 200);
+		
+		listModelList.clear();
+		listModelList.addAll(users);
+		userListAll.setItemRenderer(this);
+		userListAll.setModel(listModelList);
 	}
 
 	public void onClick$init(Event e) {

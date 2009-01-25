@@ -9,6 +9,8 @@ import org.zkoss.zul.Window;
 public class MainWindow extends Window {
 
 	private static final long serialVersionUID = -2091092165757421532L;
+	
+
 
 	public void about() {
 		Component menu = this.getFellow("content");
