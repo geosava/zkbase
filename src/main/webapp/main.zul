@@ -1,0 +1,21 @@
+<window id="main" use="org.zkbase.webapp.controller.MainWindow">
+	<menubar>
+		<menuitem label="Init" href="init.zul" />
+		<menu label="User">
+			<menupopup>
+				<menuitem label="New" />
+				<menuseparator />
+				<menuitem label="Open" />
+			</menupopup>
+		</menu>
+		<menu label="Admin">
+			<menupopup>
+				<menuitem label="New" href="index.zul"/>
+				<menuseparator />
+				<menuitem label="Open" />
+			</menupopup>
+		</menu>
+		<menuitem label="About" onClick="main.about()" />
+	</menubar>
+	<window id="content" />
+</window>
