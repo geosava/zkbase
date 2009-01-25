@@ -28,7 +28,7 @@ public class UserService extends GenericService<User> {
 		if (user.getFirstName() == null)
 			user.setFirstName("");
 		return super.findByNamedQuery("User.findByExample", firstResult,
-				maxResults, user.getUsername() + "%", user.getFirstName() + "%");
+				maxResults, user.getUsername(), user.getFirstName());
 	}
 
 }
