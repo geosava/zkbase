@@ -1,11 +1,11 @@
 <window id="main" use="org.zkbase.webapp.controller.MainWindow">
 	<menubar>
-		<menuitem label="Init" href="init.zul" />
+		<menuitem label="Init" onClick='main.includeContent("init.zul")'/>
 		<menu label="User">
 			<menupopup>
-				<menuitem label="New" />
+				<menuitem label="List" onClick='main.includeContent("portal/user/userList.zul")'/>
 				<menuseparator />
-				<menuitem label="Open" />
+				<menuitem label="Add" onClick='main.includeContent("portal/user/userAdd.zul")' />							
 			</menupopup>
 		</menu>
 		<menu label="Admin">
@@ -17,5 +17,5 @@
 		</menu>
 		<menuitem label="About" onClick="main.about()" />
 	</menubar>
-	<window id="content" />
+	<include id="content" />
 </window>
