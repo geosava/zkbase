@@ -24,31 +24,21 @@
 		</listbox>
 		<button id="init" label="Init" width="36px" height="24px" />
 
-		<!-- TEST CODE --><!--
-			<button id="btn" label="show" onClick="content.visible = true" />
-			<div id="content" fulfill="btn.onClick">
-			<textbox id="searchField1" width="200px"
-			value="@{userController.aha}" />
-			</div>
-			<combobox id="combo" onOpen="prepare()" />
-			<zscript><![CDATA[
-			void prepare() {    
-			if (event.isOpen() && combo.getItemCount() == 0) {        
-			combo.appendItem("First Option");            
-			}        
-			}    
-			]]></zscript>
-			
-			<button id="b" label="open" />
-			<div id="d" fulfill="b.onClick=/test/super.zul"></div>
-			
-			<div fulfill="=/test/super.zul">
-			<combobox />
-			</div>
-			
-			<label id="fullName" value="@{person.fullName, load-when='firstName.onChange,lastName.onChange'}"/>
-			
-			
-		-->
+	<groupbox width="240px" closable="true">
+		<caption label="Add User" />
+		<vbox>
+			user name:
+			<textbox id="username" />
+			first name:
+			<textbox id="firstName" />
+			last name:
+			<textbox id="lastName" />
+			password:
+			<textbox id="password" />
+			email:
+			<textbox id="email" />
+		</vbox>
+		<button id="add" label="Add" width="36px" height="24px" />
+	</groupbox>
 	</window>
 </zk>

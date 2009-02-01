@@ -6,15 +6,19 @@
 			<bandpopup fulfill="test1.onOpen">
 				<textbox id="fillMe1"
 					use="org.zkbase.webapp.controller.MyTextbox"
-					onFocus="test1.value=self.value; test1.closeDropdown();" />
+					onFocus="test1.value=self.value; fillMe1.setSelected(101); test1.closeDropdown();" 
+					constraint="no empty"/>
 			</bandpopup>
 		</bandbox>
+		<button id="submit1" label="Submit" onClick='alert(fillMe1.getSelected())' />
 		<bandbox id="test2">
 			<bandpopup fulfill="test2.onOpen">
 				<textbox id="fillMe2"
-					use="org.zkbase.webapp.controller.MyTextbox"
-					onFocus="test2.value=self.value; test2.closeDropdown();" />
+					use="org.zkbase.webapp.controller.MyTextbox"					
+					onFocus="test2.value=self.value; fillMe2.setSelected(202); test2.closeDropdown();" 
+					/>
 			</bandpopup>
 		</bandbox>
+		<button id="submit2" label="Submit" onClick='alert(fillMe2.getSelected())' />
 	</window>
 </zk>

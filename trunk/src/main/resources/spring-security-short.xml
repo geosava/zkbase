@@ -8,27 +8,19 @@
 		http://www.springframework.org/schema/security/spring-security-2.0.xsd">
 
 	<!-- BEGIN: Authentication -->
+	
 	<sec:http auto-config="true">
 		<sec:intercept-url pattern="/portal/**"
 			access="ROLE_ADMIN, ROLE_USER" />
 		<sec:intercept-url pattern="/admin/**"
 			access="ROLE_ADMIN" />
-		<sec:form-login login-page="/login.jsp" />
+		<sec:form-login login-page="/login.zul" />
 	</sec:http>
 
 	<sec:authentication-provider
 		user-service-ref="userAuthenticationDetailsService">
 	</sec:authentication-provider>
 	
-	<!--
-	<sec:authentication-provider>
-		<sec:user-service>
-			<sec:user name="zeitner" password="zeitner"
-				authorities="ROLE_SALES, ACL_GENERAL_CHANGE" />
-			<sec:user name="linner" password="linner"
-				authorities="ROLE_CUSTOMER, ACL_GENERAL_CHANGE" />
-		</sec:user-service>
-	</sec:authentication-provider>
-	--><!-- END: Authentication -->
+	<!-- END: Authentication -->
 
 </beans>
