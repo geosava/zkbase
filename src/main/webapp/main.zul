@@ -10,9 +10,9 @@
 		</menu>
 		<menu label="Admin">
 			<menupopup>
-				<menuitem label="New" href="index.zul"/>
+				<menuitem label="List" onClick='main.includeContent("admin/index.zul")'/>
 				<menuseparator />
-				<menuitem label="Open" />
+				<menuitem label="Add" onClick='main.includeContent("admin/index.zul")'/>
 			</menupopup>
 		</menu>
 		<menuitem label="About" onClick="main.about()" />
