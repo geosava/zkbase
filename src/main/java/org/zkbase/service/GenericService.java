@@ -8,9 +8,10 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.zkbase.dao.BasicDao;
 import org.zkbase.dao.EntityNotFoundException;
+import org.zkbase.model.User;
 
 @Transactional(readOnly=true,propagation = Propagation.REQUIRED)
-public abstract class GenericService<T> {
+public abstract class GenericService<T>  {
 	
 	private final Class<T> objectClass;
 	
@@ -22,21 +23,33 @@ public abstract class GenericService<T> {
 	public BasicDao basicDao;
 	
 
+	/* (non-Javadoc)
+	 * @see org.zkbase.service.BaseService#count()
+	 */
 	public Long count() {
 		return this.basicDao.count(this.objectClass);
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.zkbase.service.BaseService#findByID(java.io.Serializable)
+	 */
 	@SuppressWarnings("unchecked")	
 	public T findByID(Serializable id) throws EntityNotFoundException {
 		return basicDao.find(objectClass, id);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.zkbase.service.BaseService#findAll()
+	 */
 	@SuppressWarnings("unchecked")	
 	public List<T> findAll(){
 		List<?> objects = this.basicDao.findAll(objectClass);
 		return(List<T>) objects;
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.zkbase.service.BaseService#findAll(int, int)
+	 */
 	@SuppressWarnings("unchecked")
 	public List<T> findAll(int firstResult, int maxResults){
 		List<?> objects = this.basicDao.findAll(objectClass, firstResult, maxResults);
@@ -53,6 +66,9 @@ public abstract class GenericService<T> {
 		return (T) this.basicDao.findNamedQuerySingle(namedQuery, params);		
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.zkbase.service.BaseService#persist(T)
+	 */
 	@Transactional(readOnly=false,propagation = Propagation.REQUIRED)
 	public void persist(T object){
 		this.basicDao.persist(object);
@@ -63,8 +79,14 @@ public abstract class GenericService<T> {
 		this.basicDao.remove(objectClass, id);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.zkbase.service.BaseService#merge(T)
+	 */
 	@Transactional(readOnly=false,propagation = Propagation.REQUIRED)
 	public void merge(T object) throws EntityNotFoundException {
 		this.basicDao.merge(object);
 	}
+	
+	abstract public List<T> findByExample(T example, int firstResult, int maxResults);
+
 }

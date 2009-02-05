@@ -125,8 +125,7 @@ public class UserController extends GenericForwardComposer implements
 		pageUsers.setTotalSize(userCount.intValue());
 		pageUsers.setActivePage(0);
 
-		List<User> users = userService.findAll(0, pageSize);
-		users = userService.findAll(0, pageSize);
+		List<User> users = userService.findAll(0, pageSize);		
 		listModelList.clear();
 		listModelList.addAll(users);
 		userListAll.setItemRenderer(this);

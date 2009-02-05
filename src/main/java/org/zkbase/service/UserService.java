@@ -23,12 +23,12 @@ public class UserService extends GenericService<User> {
 		return super.findByNamedQuery("User.findByNameLike", firstResult,
 				maxResults, username + "%");
 	}
-	
-	public List<User> findByExample(User user, int firstResult, int maxResults) {
-		if (user.getFirstName() == null)
-			user.setFirstName("");
+
+	@Override
+	public List<User> findByExample(User example, int firstResult, int maxResults) {
+
 		return super.findByNamedQuery("User.findByExample", firstResult,
-				maxResults, user.getUsername(), user.getFirstName());
+				maxResults, example.getUsername(), example.getFirstName());
 	}
 
 }
