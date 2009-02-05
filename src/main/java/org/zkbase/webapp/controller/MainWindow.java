@@ -14,7 +14,7 @@ public class MainWindow extends Window {
 	public void includeContent(String file) {
 		System.out.println("Loading file: " + file);
 		Include content = (Include)this.getFellow("content");
-		content.setSrc(file);
+		content.setSrc(file);			
 	}
 
 	public void about() {

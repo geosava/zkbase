@@ -10,11 +10,10 @@ public class GenUserListComposer extends GenericListComposer<User> {
 
 	public GenUserListComposer() {
 		super("userService");
-		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	User getSearchExample(String query) {
+	@Override	
+	protected User getSearchExample(String query) {
 		User example = new User();
 		example.setFirstName("%" + query + "%");
 		example.setUsername("%" + query + "%");

@@ -48,7 +48,7 @@ public class UserController extends GenericForwardComposer implements
 	public void createDemoAccount(String name, Set<Role> roles) {
 		User u = new User();
 		u.setFirstName(name);
-		u.setLastName(name);
+		u.setLastName("name");
 		u.setPassword(name);
 		u.setUsername(name);
 		u.setEmail(name + "@zkbase.org");

@@ -1,5 +1,7 @@
 package org.zkbase.service;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -40,5 +42,12 @@ public class UserAuthenticationDetailsService extends GenericService<User>
 //		if (userDetails == null)
 //			throw new UsernameNotFoundException(username);
 		return userDetails;
+	}
+
+	@Override
+	public List<User> findByExample(User example, int firstResult,
+			int maxResults) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
