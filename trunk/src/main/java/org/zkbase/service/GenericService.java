@@ -20,7 +20,7 @@ public abstract class GenericService<T>  {
 	}
 	
 	@Autowired
-	public BasicDao basicDao;
+	private BasicDao basicDao;
 	
 
 	/* (non-Javadoc)

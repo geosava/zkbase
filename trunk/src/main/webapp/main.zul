@@ -16,6 +16,7 @@
 			</menupopup>
 		</menu>
 		<menuitem label="About" onClick="main.about()" />
+		<menuitem label="Test Area" onClick=' Executions.sendRedirect("test")'/>
 	</menubar>
 	<include id="content" />
 </window>
