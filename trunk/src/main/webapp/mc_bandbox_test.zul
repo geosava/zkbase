@@ -1,0 +1,11 @@
+<?page title="Macro Component Bandbox Test" contentType="text/html;charset=UTF-8"?>
+<?component name="bb_test" macroURI="mc_bandbox.zul" class="org.zkbase.webapp.controller.McBandbox"?>
+<zk>
+	<window id="win" title="Macro Component Bandbox Test"
+		border="normal" use="org.zkbase.webapp.controller.McWindow">
+		<bb_test id="first" />
+		<bb_test id="second" />
+		<bb_test id="third" />
+		<button id="submit" label="sumit" onClick="win.testMc()" />
+	</window>
+</zk>
