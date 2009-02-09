@@ -1,0 +1,5 @@
+This page contains miscellaneous links regarding this project and/or configuration of it.
+
+= Links =
+
+  * [http://www.jroller.com/alexRuiz/entry/using_mylyn_with_google_code Using mylyn with Google Code]
