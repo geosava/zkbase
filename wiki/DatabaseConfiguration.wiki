@@ -1,0 +1,49 @@
+#summary One-sentence summary of this page.
+This page describes the configuration of different database connections in zkbase.
+
+= Introduction =
+
+Database connections in zkbase are configured by using [http://maven.apache.org/guides/introduction/introduction-to-profiles.html Maven profiles]. This allows for great flexibility and ease of change of the used database (e.g. test db/production db) without the need of changing code or configuration files.
+
+= Database Profiles =
+
+== Example Profiles == 
+The `pom.xml` contains examples of database profiles, as for example the `hsqldb` profile:
+{{{
+		<profile>
+			<id>hsqldb</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<dbunit.dataTypeFactoryName>org.dbunit.ext.hsqldb.HsqldbDataTypeFactory</dbunit.dataTypeFactoryName>
+
+				<hibernate.dialect>org.hibernate.dialect.HSQLDialect</hibernate.dialect>
+				<jdbc.groupId>hsqldb</jdbc.groupId>
+				<jdbc.artifactId>hsqldb</jdbc.artifactId>
+				<jdbc.version>${hsqldb.version}</jdbc.version>
+				<jdbc.driverClassName>org.hsqldb.jdbcDriver</jdbc.driverClassName>
+				<jdbc.url><![CDATA[jdbc:hsqldb:zkbase]]></jdbc.url>
+				<jdbc.username>sa</jdbc.username>
+				<jdbc.password></jdbc.password>
+			</properties>
+		</profile>
+}}}
+This profile defines an in-memory HSQL database for rapid development without the need of setting up a full-fledged DB server engine as Oracle or MySQL. The profile has to define several properties as the hibernate dialect, the jdbc artifact or the connection parameters, e.g. (see above). Other DB profiles are expected to define similar properties.
+
+If activated, zkbase uses this profile to connect to a database.
+
+*Note:* The `<dbunit.dataTypeFactoryName>` defines the factory used for database testing with dbunit, which is not (yet) integrated in zkbase. As later versions of zkbase might include dbunit, users are encouraged to define this property for their own database profiles as well.
+
+== Activation and Definition of Profiles ==
+The HSQLDB connection depicted above is activated by default (as can be seen in the `<activation>` section). Thus, zkbase can be used out-of-the-box without setting up a database server or configuring a database connection at all. However, users are encouraged to remove the `<activeByDefault>` property (or set its value to `false`) if they need to change the database configuration frequently. In this case, configuration from command line (`mvn jetty:run -P hsqldb`, e.g.) or from the `settings.xml` (per user or global) should be preferred. See [http://maven.apache.org/guides/introduction/introduction-to-profiles.html Maven - Introduction to Build Profiles] for details.
+
+Maven offers a number of possibilities to define new profiles. The obvious way is to include them into the `pom.xml`. As a different approach, users can define their profiles (or parts of it) in the `settings.xml`, for example to keep database credentials confidential.
+
+= Inner Workings =
+
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
