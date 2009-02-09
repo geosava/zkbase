@@ -1,6 +1,0 @@
-jdbc.url=jdbc\:oracle\:thin\:@10.1.1.213\:1521\:PMTDEV01
-jdbc.username=[USERNAME]
-jdbc.password=[PASSWORD]
-jdbc.driver=oracle.jdbc.driver.OracleDriver
-hibernate.dialect=org.hibernate.dialect.Oracle10gDialect
-hibernate.hbm2ddl.auto=update
