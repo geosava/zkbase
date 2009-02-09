@@ -2,4 +2,4 @@ This page contains miscellaneous links regarding this project and/or configurati
 
 = Links =
 
-  * [http://www.jroller.com/alexRuiz/entry/using_mylyn_with_google_code Using mylyn with Google Code]
+  * [http://www.jroller.com/alexRuiz/entry/using_mylyn_with_google_code1 Using Mylyn Eclipse Ganymede) with Google Code]
