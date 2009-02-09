@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dataset>
+     <table name="User">
+        <column>id</column>
+        <column>username</column>
+        <column>password</column>
+        <column>first_name</column>
+        <column>last_name</column>
+        <column>enabled</column>
+        <column>account_expired</column>
+        <column>account_locked</column>
+        <column>credentials_expired</column>
+        <row>
+            <value description="id">1</value>
+            <value description="username">user</value>
+            <value description="password"></value>
+            <value description="first_name">Tomcat</value>
+            <value description="last_name">User</value>
+            <value description="enabled">1</value>
+            <value description="account_expired">0</value>
+            <value description="account_locked">0</value>
+            <value description="credentials_expired">0</value>
+        </row>
+        <row>
+            <value description="id">2</value>
+            <value description="username">admin</value>
+            <value description="password"></value>
+            <value description="first_name">John</value>
+            <value description="last_name">Doe</value>
+            <value description="enabled">1</value>
+            <value description="account_expired">0</value>
+            <value description="account_locked">0</value>
+            <value description="credentials_expired">0</value>
+        </row>
+        <row>
+            <value description="id">3</value>
+            <value description="username">jane</value>
+            <value description="password"></value>
+            <value description="first_name">Jane</value>
+            <value description="last_name">Smith</value>
+            <value description="enabled">1</value>
+            <value description="account_expired">0</value>
+            <value description="account_locked">0</value>
+            <value description="credentials_expired">0</value>
+        </row>
+    </table>
+    <table name="Role">
+        <column>id</column>
+        <column>name</column>
+        <column>description</column>
+        <row>
+            <value description="id">1</value>
+            <value description="name">ROLE_ADMIN</value>
+            <value description="description"><![CDATA[Administrator role (can edit Users)]]></value>
+        </row>
+        <row>
+            <value description="id">2</value>
+            <value description="name">ROLE_USER</value>
+            <value description="description"><![CDATA[Default role for all Users]]></value>
+        </row>
+    </table>
+    <table name="user_roles">
+        <column>user</column>
+        <column>roles</column>
+        <row>
+            <value description="user_id">1</value>
+            <value description="role_id">2</value>
+        </row>
+        <row>
+            <value description="user_id">2</value>
+            <value description="role_id">1</value>
+        </row>
+        <row>
+            <value description="user_id">3</value>
+            <value description="role_id">1</value>
+        </row>
+    </table>
+</dataset>
