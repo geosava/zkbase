@@ -1,5 +1,4 @@
-#summary One-sentence summary of this page.
-This page describes the configuration of different database connections in zkbase.
+#summary Configuration of different database connections in zkbase.
 
 = Introduction =
 
@@ -42,8 +41,24 @@ Maven offers a number of possibilities to define new profiles. The obvious way i
 
 = Inner Workings =
 
+Each database profile defines a set of properties which are used to configure the database settings in the project. This is achieved by the following resource filter in `pom.xml`:
+{{{
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+}}}
+This enables filtering in the resources directory. Maven will replace each occurence of `${var}` with the value of `<var>value</var>`, if defined.
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+For example, `src/main/resources/jdbc.properties` is defined as follows:
+{{{
+jdbc.url=${jdbc.url}
+jdbc.username=${jdbc.username}
+jdbc.password=${jdbc.password}
+jdbc.driver=${jdbc.driverClassName}
+hibernate.dialect=${hibernate.dialect}
+hibernate.hbm2ddl.auto=${hibernate.hbm2ddl.auto}
+}}}
+If the default `hsqldb` profile is activated, Maven replaces `${jdbc.username}` with `sa` as the profile defines `<jdbc.username>sa</jdbc.username>`.
+
+These properties are then used in `src/main/resources/data-source-context.xml` to define the properties of the database connection.
