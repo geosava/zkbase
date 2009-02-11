@@ -31,13 +31,15 @@
 		<commons-io.version>1.4</commons-io.version>
 	</properties>
 
-	<dependencies>
-		<!--
-			<dependency> <groupId>com.oracle</groupId>
-			<artifactId>oracle-driver</artifactId> <version>14</version>
-			</dependency>
-		-->
+	<dependencies><!--
+
 		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>oracle-driver</artifactId>
+			<version>14</version>
+		</dependency>
+
+		--><dependency>
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
 			<version>1.0.4</version>
@@ -52,7 +54,7 @@
 			<artifactId>commons-io</artifactId>
 			<version>${commons-io.version}</version>
 		</dependency>
-		
+
 		<!-- SPRING FRAMEWORK -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -66,9 +68,9 @@
 			<version>${spring.version}</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<!-- ZK FRAMEWORK -->
-		
+
 		<dependency>
 			<groupId>org.zkoss.zk</groupId>
 			<artifactId>zk</artifactId>
@@ -267,8 +269,25 @@
 				<jdbc.version>${mysql.version}</jdbc.version>
 				<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
 				<jdbc.url><![CDATA[jdbc:mysql://localhost/zkbase?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=utf-8]]></jdbc.url>
-				<jdbc.username>sa</jdbc.username>
+				<jdbc.username>root</jdbc.username>
 				<jdbc.password></jdbc.password>
+			</properties>
+		</profile>
+		<profile>
+			<id>oracle</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<dbunit.dataTypeFactoryName>org.dbunit.dataset.datatype.DefaultDataTypeFactory</dbunit.dataTypeFactoryName>
+				<hibernate.dialect>org.hibernate.dialect.Oracle10gDialect</hibernate.dialect>
+				<jdbc.groupId>com.oracle</jdbc.groupId>
+				<jdbc.artifactId>oracle-driver</jdbc.artifactId>
+				<jdbc.version>14</jdbc.version>
+				<jdbc.driverClassName>oracle.jdbc.driver.OracleDriver</jdbc.driverClassName>
+				<jdbc.url><![CDATA[jdbc:oracle:thin:@10.1.1.213:1521:[DB-NAME]]]></jdbc.url>
+				<jdbc.username>[USERNAME]</jdbc.username>
+				<jdbc.password>[PASSWORD]</jdbc.password>
 			</properties>
 		</profile>
 	</profiles>
