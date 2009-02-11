@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.Transient;
 
@@ -20,6 +21,7 @@ import org.springframework.security.GrantedAuthority;
 import org.springframework.security.userdetails.UserDetails;
 
 @Entity
+@Table(name="zkb_user")
 @NamedQueries( {
 		@NamedQuery(name = "User.count", query = "SELECT COUNT(u) FROM User u"),
 		@NamedQuery(name = "User.findByName", query = "SELECT u FROM User u WHERE u.username = ?1"),
