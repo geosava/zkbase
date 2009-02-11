@@ -1,4 +1,4 @@
-Introduction of the table-prefix "zkb" due to avoiding illegal table names.
+#summary Reason for introducing the table-prefix "zkb".
 
 = Reason = 
 
