@@ -16,4 +16,10 @@ public class RoleService extends GenericService<Role> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Long countByExample(Role example) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

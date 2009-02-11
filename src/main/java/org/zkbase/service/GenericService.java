@@ -29,7 +29,7 @@ public abstract class GenericService<T>  {
 	public Long count() {
 		return this.basicDao.count(this.objectClass);
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see org.zkbase.service.BaseService#findByID(java.io.Serializable)
 	 */
@@ -62,8 +62,8 @@ public abstract class GenericService<T>  {
 	}
 	
 	@SuppressWarnings("unchecked")
-	protected T findByNamedQuerySingle(String namedQuery, Object... params){
-		return (T) this.basicDao.findNamedQuerySingle(namedQuery, params);		
+	protected Object findByNamedQuerySingle(String namedQuery, Object... params){
+		return this.basicDao.findNamedQuerySingle(namedQuery, params);		
 	}
 	
 	/* (non-Javadoc)
@@ -88,5 +88,7 @@ public abstract class GenericService<T>  {
 	}
 	
 	abstract public List<T> findByExample(T example, int firstResult, int maxResults);
+	
+	abstract public Long countByExample(T example);	
 
 }

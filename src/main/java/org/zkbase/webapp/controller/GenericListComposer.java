@@ -2,7 +2,9 @@ package org.zkbase.webapp.controller;
 
 import java.util.List;
 
+import org.zkbase.model.User;
 import org.zkbase.service.GenericService;
+import org.zkbase.service.UserService;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
@@ -37,11 +39,9 @@ public abstract class GenericListComposer<T> extends GenericForwardComposer
 
 	public void onClick$search(Event e) {
 		example = getSearchExample(glc_searchField.getValue());
-		
-		//TODO: get the count of the search result more effectively 
-		List<T> list = service.findByExample(example, 0, 1000);
-		glc_page.setActivePage(0);
-		glc_page.setTotalSize(list.size());
+		Long size = service.countByExample(example);
+		glc_page.setTotalSize(size.intValue());
+		glc_page.setActivePage(0);		
 		buildList(0);
 	}
 

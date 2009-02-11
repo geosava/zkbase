@@ -15,7 +15,7 @@ public class UserService extends GenericService<User> {
 	}
 
 	public User findByUserName(String username) {
-		return super.findByNamedQuerySingle("User.findByName", username);
+		return (User)super.findByNamedQuerySingle("User.findByName", username);
 	}
 
 	public List<User> findByUserNameLike(String username, int firstResult,
@@ -29,6 +29,10 @@ public class UserService extends GenericService<User> {
 
 		return super.findByNamedQuery("User.findByExample", firstResult,
 				maxResults, example.getUsername(), example.getFirstName());
+	}
+	
+	public Long countByExample(User example) {
+		return (Long)super.findByNamedQuerySingle("User.countByExample", example.getUsername(), example.getFirstName());
 	}
 
 }
