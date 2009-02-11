@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.TableGenerator;
 import javax.persistence.Transient;
 
 import org.springframework.security.GrantedAuthority;
@@ -22,8 +23,9 @@ import org.springframework.security.userdetails.UserDetails;
 @NamedQueries( {
 		@NamedQuery(name = "User.count", query = "SELECT COUNT(u) FROM User u"),
 		@NamedQuery(name = "User.findByName", query = "SELECT u FROM User u WHERE u.username = ?1"),
-		@NamedQuery(name = "User.findByNameLike", query = "SELECT u FROM User u WHERE u.username LIKE ?1"), 
-		@NamedQuery(name = "User.findByExample", query = "SELECT u FROM User u WHERE u.username LIKE ?1 AND u.firstName LIKE ?2")
+		@NamedQuery(name = "User.findByNameLike", query = "SELECT u FROM User u WHERE u.username LIKE ?1"),
+		@NamedQuery(name = "User.findByExample", query = "SELECT u FROM User u WHERE u.username LIKE ?1 AND u.firstName LIKE ?2"),
+		@NamedQuery(name = "User.countByExample", query = "SELECT COUNT(u) FROM User u WHERE u.username LIKE ?1 AND u.firstName LIKE ?2")
 		})
 public class User implements Serializable, UserDetails {
 
@@ -42,7 +44,14 @@ public class User implements Serializable, UserDetails {
 	private boolean credentialsExpired;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@TableGenerator(
+			name="userGen",
+			table="ID_GEN",
+			pkColumnName="GEN_KEY",
+			valueColumnName="GEN_VALUE",
+			pkColumnValue="USER_ID",
+			allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.TABLE, generator="userGen")	
 	public Long getId() {
 		return id;
 	}
@@ -91,7 +100,7 @@ public class User implements Serializable, UserDetails {
 		this.email = email;
 	}
 
-	@ManyToMany (fetch=FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER)
 	public Set<Role> getRoles() {
 		return roles;
 	}
@@ -136,9 +145,9 @@ public class User implements Serializable, UserDetails {
 	@Override
 	@Transient
 	public GrantedAuthority[] getAuthorities() {
-		Set<Role> roles = this.getRoles();		
+		Set<Role> roles = this.getRoles();
 		Role[] ga = new Role[roles.size()];
-		
+
 		Iterator<Role> iter = roles.iterator();
 		int i = 0;
 		while (iter.hasNext())

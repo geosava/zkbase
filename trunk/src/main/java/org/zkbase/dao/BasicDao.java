@@ -158,7 +158,7 @@ public class BasicDao {
 	@SuppressWarnings("unchecked")
 	public <T> List<T> findNamedQuery(final String namedQuery, int firstResult, int maxResult, Object... params) {
 		
-		Query query = entityManager.createNamedQuery(namedQuery);
+		Query query = entityManager.createNamedQuery(namedQuery);		
 		query.setFirstResult(firstResult);
 		query.setMaxResults(maxResult);		
 		setParameters(query, params);

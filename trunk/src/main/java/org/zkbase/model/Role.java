@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.TableGenerator;
 import javax.persistence.Transient;
 
 import org.springframework.security.GrantedAuthority;
@@ -19,7 +20,15 @@ public class Role implements Serializable, GrantedAuthority {
     private String name;
     private String description;
     
-    @Id  @GeneratedValue(strategy=GenerationType.AUTO)
+    @Id
+	@TableGenerator(
+			name="roleGen",
+			table="ID_GEN",
+			pkColumnName="GEN_KEY",
+			valueColumnName="GEN_VALUE",
+			pkColumnValue="ROLE_ID",
+			allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.TABLE, generator="roleGen")	
 	public Long getId() {
 		return id;
 	}

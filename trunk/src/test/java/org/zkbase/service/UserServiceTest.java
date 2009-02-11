@@ -86,6 +86,12 @@ public class UserServiceTest extends AbstractJpaTests {
 		insertUsers();
 		Long c = userService.count();
 		assertTrue(c == 6);
+		
+		User example = new User();
+		example.setUsername("user2");
+		example.setLastName("user2");
+		c = userService.countByExample(example);
+		assertTrue(c == 1);
 	}
 	
 	public void testStoreUserComplex() throws Exception {

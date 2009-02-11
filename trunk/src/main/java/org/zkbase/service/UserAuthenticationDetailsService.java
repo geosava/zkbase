@@ -25,7 +25,7 @@ public class UserAuthenticationDetailsService extends GenericService<User>
 	}
 
 	public User findByUserName(String username) {
-		return super.findByNamedQuerySingle("User.findByName", username);
+		return (User)super.findByNamedQuerySingle("User.findByName", username);
 	}
 
 	@Override
@@ -47,6 +47,12 @@ public class UserAuthenticationDetailsService extends GenericService<User>
 	@Override
 	public List<User> findByExample(User example, int firstResult,
 			int maxResults) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Long countByExample(User example) {
 		// TODO Auto-generated method stub
 		return null;
 	}
