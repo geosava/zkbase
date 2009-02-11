@@ -4,7 +4,7 @@
 	<groupId>org.zkbase</groupId>
 	<artifactId>zkbase</artifactId>
 	<packaging>war</packaging>
-	<version>1.0</version>
+	<version>1.0-SNAPSHOT</version>
 	<name>zkbase</name>
 	<url>http://code.google.com/p/zkbase/</url>
 	<properties>
