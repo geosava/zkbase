@@ -1,0 +1,25 @@
+#summary Using logging in zkbase
+
+= Introduction =
+
+ZKBase supports logging by using [http://logging.apache.org/log4j/ log4j].
+
+*Note:* The configuration is heavily inspired by [http://appfuse.org/display/APF/Home Appfuse].
+
+= Usage =
+
+To create a logger as member variable, use the following code (or similar):
+{{{
+    private final Log log = LogFactory.getLog(getClass());
+}}}
+
+Now, the logger can be used, e.g.:
+{{{
+	log.info("Adding user");
+}}}
+
+As default, the log is appended to the console (see configuration for details).
+
+= Configuration =
+
+TODO
