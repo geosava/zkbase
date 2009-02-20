@@ -84,10 +84,11 @@ public class UserController extends GenericForwardComposer implements
 		// insert roles:
 		Role r1 = new Role();
 		r1.setName("ROLE_USER");
-		r1.setDescription("Administrator privileges");
+		r1.setDescription("Common user privileges");
 		Role r2 = new Role();
 		r2.setName("ROLE_ADMIN");
-		r2.setDescription("Common user privileges");
+		r2.setDescription("Administrator privileges");
+
 		roleService.persist(r1);
 		roleService.persist(r2);
 
