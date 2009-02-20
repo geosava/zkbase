@@ -7,6 +7,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.zkbase.model.Role;
 import org.zkbase.model.User;
@@ -28,6 +30,7 @@ import org.zkoss.zul.event.PagingEvent;
 
 public class UserController extends GenericForwardComposer implements
 		ListitemRenderer {
+    private final Log log = LogFactory.getLog(getClass());
 
 	protected Textbox username;
 	protected Textbox firstName;
@@ -46,6 +49,7 @@ public class UserController extends GenericForwardComposer implements
 	RoleService roleService;
 
 	public void createDemoAccount(String name, Set<Role> roles) {
+		log.debug("Creating demo account for user " + name);
 		User u = new User();
 		u.setFirstName(name);
 		u.setLastName("name");
@@ -63,6 +67,7 @@ public class UserController extends GenericForwardComposer implements
 	}
 
 	public void onClick$search(Event e) {
+		log.info("onClick: search");
 		User example = new User();
 		example.setUsername("%" + searchField.getValue() + "%");
 		example.setFirstName("%" +searchField.getValue() + "%");
@@ -75,7 +80,7 @@ public class UserController extends GenericForwardComposer implements
 	}
 
 	public void onClick$init(Event e) {
-
+		log.info("onClick: init");
 		// insert roles:
 		Role r1 = new Role();
 		r1.setName("ROLE_USER");
@@ -105,6 +110,7 @@ public class UserController extends GenericForwardComposer implements
 	}
 
 	public void onClick$add(Event e) {
+		log.info("onClick: add");
 
 		User u = new User();
 		u.setFirstName(firstName.getValue());
@@ -120,6 +126,8 @@ public class UserController extends GenericForwardComposer implements
 	}
 
 	private void buildUserList() {
+		log.info("Building user list");
+		
 		final Long userCount = userService.count();
 		final int pageSize = pageUsers.getPageSize();
 		pageUsers.setTotalSize(userCount.intValue());
