@@ -32,15 +32,6 @@ public class UserAuthenticationDetailsService extends GenericService<User>
 	public UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException, DataAccessException {
 		 UserDetails userDetails = this.findByUserName(username);
-		// UserDetails userDetails = entityManager.find(User.class, new Long(1));
-		// UserDetails userDetails = new UserAuthenticationDetails(null);
-//		User user = new User();
-//		user.setUsername("admin");
-//		user.setPassword("admin");
-//		user.setEnabled(true);
-//		UserDetails userDetails = user;		
-//		if (userDetails == null)
-//			throw new UsernameNotFoundException(username);
 		return userDetails;
 	}
 

@@ -1,6 +1,0 @@
-jdbc.url=jdbc:hsqldb:file:zkbase_test.dat
-jdbc.username=sa
-jdbc.password=
-jdbc.driver=org.hsqldb.jdbcDriver
-hibernate.dialect=org.hibernate.dialect.HSQLDialect
-hibernate.hbm2ddl.auto=create-drop
