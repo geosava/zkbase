@@ -31,8 +31,7 @@
 	    <list>
             <value>classpath:jdbc.properties</value>
 	    </list>
-	    </property>
-        
+	    </property>        
     </bean>
     
 
