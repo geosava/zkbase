@@ -26,7 +26,6 @@ import javax.persistence.NonUniqueResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.springframework.orm.jpa.JpaOperations;
 import org.springframework.stereotype.Repository;
 
 /**

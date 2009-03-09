@@ -1,4 +1,4 @@
-package org.zkbase.webapp.controller;
+package org.zkbase.webapp.controller.test;
 
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zul.Window;

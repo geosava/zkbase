@@ -14,7 +14,7 @@
 
 	<!--  JPA config  -->
 
-	<tx:annotation-driven />
+	<tx:annotation-driven proxy-target-class="true"/>
 
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"

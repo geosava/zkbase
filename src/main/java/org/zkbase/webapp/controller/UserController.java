@@ -1,7 +1,5 @@
 package org.zkbase.webapp.controller;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -15,10 +13,11 @@ import org.zkbase.model.User;
 import org.zkbase.service.RoleService;
 import org.zkbase.service.UserService;
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.WrongValueException;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
-import org.zkoss.zkplus.databind.AnnotateDataBinder;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Listcell;
@@ -28,8 +27,7 @@ import org.zkoss.zul.Paging;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.event.PagingEvent;
 
-public class UserController extends GenericForwardComposer implements
-		ListitemRenderer {
+public class UserController extends GenericForwardComposer {
     private final Log log = LogFactory.getLog(getClass());
 
 	protected Textbox username;
@@ -37,10 +35,6 @@ public class UserController extends GenericForwardComposer implements
 	protected Textbox lastName;
 	protected Textbox password;
 	protected Textbox email;
-	protected Textbox searchField;
-	protected Paging pageUsers;
-	protected Listbox userListAll;
-	protected ListModelList listModelList;
 
 	@Autowired
 	UserService userService;
@@ -64,19 +58,6 @@ public class UserController extends GenericForwardComposer implements
 		u.setRoles(roles);
 
 		userService.persist(u);
-	}
-
-	public void onClick$search(Event e) {
-		log.info("onClick: search");
-		User example = new User();
-		example.setUsername("%" + searchField.getValue() + "%");
-		example.setFirstName("%" +searchField.getValue() + "%");
-		List<User> users = userService.findByExample(example, 0, 200);
-		
-		listModelList.clear();
-		listModelList.addAll(users);
-		userListAll.setItemRenderer(this);
-		userListAll.setModel(listModelList);
 	}
 
 	public void onClick$init(Event e) {
@@ -103,11 +84,13 @@ public class UserController extends GenericForwardComposer implements
 		// set up admin account:
 		this.createDemoAccount("admin", roles);
 
-		buildUserList();
 	}
 
-	public List<User> getList() {
-		return userService.findAll();
+	public void onChange$username(Event e) {
+		log.info("onChange: username");
+		User user = userService.findByUserName(username.getValue());
+		if (user != null)
+			throw new WrongValueException(username, "username already exists");
 	}
 
 	public void onClick$add(Event e) {
@@ -123,45 +106,13 @@ public class UserController extends GenericForwardComposer implements
 		// u.setRoles(roles);
 
 		userService.persist(u);
-		buildUserList();
+		Executions.sendRedirect("main.zul");
 	}
 
-	private void buildUserList() {
-		log.info("Building user list");
-		
-		final Long userCount = userService.count();
-		final int pageSize = pageUsers.getPageSize();
-		pageUsers.setTotalSize(userCount.intValue());
-		pageUsers.setActivePage(0);
-
-		List<User> users = userService.findAll(0, pageSize);		
-		listModelList.clear();
-		listModelList.addAll(users);
-		userListAll.setItemRenderer(this);
-		userListAll.setModel(listModelList);
-
-	}
 
 	@Override
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
-
-		listModelList = new ListModelList();
-
-		buildUserList();
-		final int pageSize = pageUsers.getPageSize();
-		pageUsers.addEventListener("onPaging", new EventListener() {
-			public void onEvent(Event event) {
-
-				PagingEvent pe = (PagingEvent) event;
-				int pgno = pe.getActivePage();
-				int firstResult = pgno * pageSize;
-				listModelList.clear();
-				List<User> users = userService.findAll(firstResult, pageSize);
-				listModelList.addAll(users);
-				userListAll.setModel(listModelList);
-			}
-		});
 	}
 
 	protected String getUserRolesString(User user) {
@@ -174,28 +125,6 @@ public class UserController extends GenericForwardComposer implements
 		}
 		return userRolesString;
 	}
-
-	@Override
-	public void render(Listitem listItem, Object data) throws Exception {
-		User user = (User) data;
-		new Listcell(user.getUsername() + "").setParent(listItem);
-		new Listcell(user.getFirstName() + "").setParent(listItem);
-		new Listcell(user.getLastName() + "").setParent(listItem);
-		new Listcell(user.getEmail() + "").setParent(listItem);
-		new Listcell(this.getUserRolesString(user)).setParent(listItem);
-	}
 }
 
-// class UserListModel extends ListModelList {
-//
-// private static final long serialVersionUID = -8699018351228988340L;
-//	
-// @SuppressWarnings("unchecked")
-// @Override
-// public void sort(Comparator cmpr, boolean ascending) {
-// Collections.sort(getInnerList() , cmpr);
-// fireEvent(org.zkoss.zul.event.ListDataEvent.CONTENTS_CHANGED, -1, -1);
-// }
-//
-// }
 

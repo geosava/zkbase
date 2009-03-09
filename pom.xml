@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.zkbase</groupId>
-	<artifactId>zkbase</artifactId>
+	<artifactId>zkbase-new</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>zkbase</name>
+	<name>zkbase-new</name>
 	<url>http://code.google.com/p/zkbase/</url>
 	<properties>
 		<zk.version>3.5.2</zk.version>
