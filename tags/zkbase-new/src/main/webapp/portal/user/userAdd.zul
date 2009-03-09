@@ -1,0 +1,20 @@
+<?page title="Add User" contentType="text/html;charset=UTF-8"?>
+	<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<window title="User Add" apply="${userController}">
+	<groupbox width="240px" closable="true">
+		<caption label="Add User" />
+		<vbox>
+			user name:
+			<textbox id="username" constraint="no empty"/>
+			first name:
+			<textbox id="firstName" />
+			last name:
+			<textbox id="lastName" />
+			password:
+			<textbox id="password" />
+			email:
+			<textbox id="email" constraint="/.+@.+\.[a-z]+/: e-mail address only"/>
+		</vbox>
+		<button id="add" label="Add" width="36px" height="24px" />
+	</groupbox>
+</window>
