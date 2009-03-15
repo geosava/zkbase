@@ -1,0 +1,11 @@
+<bandbox id="bb" use="org.zkbase.webapp.controller.MyBandbox">
+	<bandpopup onFulfill="bb.onOpen">	
+		<textbox id="search" />		
+		<vbox>		
+		    <label value="set bb" onClick='bb.test="bla bla"' />
+			<label value="${arg.includer.test}" onClick='bb.value=self.value; bb.test="bla bla"; bb.closeDropdown();' />
+			<label value="two" onClick="bb.value=self.value; bb.closeDropdown();" />
+			<label value="three" onClick="bb.value=self.value; bb.closeDropdown();" />
+		</vbox>
+	</bandpopup>
+</bandbox>
