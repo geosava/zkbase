@@ -1,7 +1,6 @@
 package org.zkbase.webapp.controller;
 
 import org.zkbase.model.User;
-import org.zkbase.service.GenericService;
 import org.zkoss.zul.Listcell;
 import org.zkoss.zul.Listitem;
 

@@ -17,12 +17,14 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.Transient;
+import javax.persistence.UniqueConstraint;
 
 import org.springframework.security.GrantedAuthority;
 import org.springframework.security.userdetails.UserDetails;
 
 @Entity
-@Table(name="zkb_user")
+@Table(name="zkb_user", uniqueConstraints={@UniqueConstraint(columnNames={"username"})})
+
 @NamedQueries( {
 		@NamedQuery(name = "User.count", query = "SELECT COUNT(u) FROM User u"),
 		@NamedQuery(name = "User.findByName", query = "SELECT u FROM User u WHERE u.username = ?1"),
@@ -95,7 +97,7 @@ public class User implements Serializable, UserDetails {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
+	
 	public String getEmail() {
 		return email;
 	}

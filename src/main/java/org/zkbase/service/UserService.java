@@ -2,20 +2,27 @@ package org.zkbase.service;
 
 import java.util.List;
 
+import javax.persistence.NoResultException;
+
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.zkbase.dao.EntityNotFoundException;
 import org.zkbase.model.User;
 
 @Transactional(readOnly=true,propagation = Propagation.REQUIRED)
-public class UserService extends GenericService<User> {
+public class UserService extends SearchableService<User> {
 
 	public UserService() {
 		super(User.class);
 	}
 
 	public User findByUserName(String username) {
-		return (User)super.findByNamedQuerySingle("User.findByName", username);
+		
+		try {
+			return (User)super.findByNamedQuerySingle("User.findByName", username);
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
 
 	public List<User> findByUserNameLike(String username, int firstResult,
@@ -24,7 +31,6 @@ public class UserService extends GenericService<User> {
 				maxResults, username + "%");
 	}
 
-	@Override
 	public List<User> findByExample(User example, int firstResult, int maxResults) {
 
 		return super.findByNamedQuery("User.findByExample", firstResult,

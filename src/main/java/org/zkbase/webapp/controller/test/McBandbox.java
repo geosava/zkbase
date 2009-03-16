@@ -1,4 +1,4 @@
-package org.zkbase.webapp.controller;
+package org.zkbase.webapp.controller.test;
 
 import org.zkoss.zk.ui.HtmlMacroComponent;
 import org.zkoss.zul.Label;

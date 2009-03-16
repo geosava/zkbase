@@ -2,9 +2,8 @@ package org.zkbase.webapp.controller;
 
 import java.util.List;
 
-import org.zkbase.model.User;
 import org.zkbase.service.GenericService;
-import org.zkbase.service.UserService;
+import org.zkbase.service.SearchableService;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
@@ -26,13 +25,13 @@ public abstract class GenericListComposer<T> extends GenericForwardComposer
 	protected Listbox glc_listbox;
 	protected ListModelList listModelList;
 
-	GenericService<T> service;
+	SearchableService<T> service;
 	T example;
 
 	@SuppressWarnings("unchecked")
 	public GenericListComposer(String serviceName) {
 		super();
-		this.service = (GenericService<T>) SpringUtil.getBean(serviceName);
+		this.service = (SearchableService<T>) SpringUtil.getBean(serviceName);
 		if (this.service == null)
 			System.out.println("ERROR: service not found");
 	}

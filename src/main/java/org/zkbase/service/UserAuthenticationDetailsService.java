@@ -43,17 +43,4 @@ public class UserAuthenticationDetailsService extends GenericService<User>
 //			throw new UsernameNotFoundException(username);
 		return userDetails;
 	}
-
-	@Override
-	public List<User> findByExample(User example, int firstResult,
-			int maxResults) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Long countByExample(User example) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

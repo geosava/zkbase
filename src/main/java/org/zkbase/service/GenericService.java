@@ -86,14 +86,4 @@ public abstract class GenericService<T>  {
 	public void merge(T object) throws EntityNotFoundException {
 		this.basicDao.merge(object);
 	}
-	
-	public void test(User u) {
-		Long x = (Long)this.basicDao.findSingle("SELECT COUNT(u) from User u WHERE u.username LIKE ?1", u.getUsername());
-		System.out.println(x);
-	}
-	
-	abstract public List<T> findByExample(T example, int firstResult, int maxResults);
-	
-	abstract public Long countByExample(T example);	
-
 }

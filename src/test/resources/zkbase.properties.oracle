@@ -1,6 +1,0 @@
-jdbc.url=jdbc\:oracle\:thin\:@[HOSTNAME]\:1521\:[DB NAME]
-jdbc.username=[USERNAME]
-jdbc.password=[PASSWORD]
-jdbc.driver=oracle.jdbc.driver.OracleDriver
-hibernate.dialect=org.hibernate.dialect.Oracle10gDialect
-hibernate.hbm2ddl.auto=create-drop
