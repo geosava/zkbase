@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.zkbase.dao.BasicDao;
 import org.zkbase.dao.EntityNotFoundException;
-import org.zkbase.model.User;
 
 @Transactional(readOnly=true,propagation = Propagation.REQUIRED)
 public abstract class GenericService<T>  {
@@ -64,6 +63,16 @@ public abstract class GenericService<T>  {
 	@SuppressWarnings("unchecked")
 	protected Object findByNamedQuerySingle(String namedQuery, Object... params){
 		return this.basicDao.findNamedQuerySingle(namedQuery, params);		
+	}
+	
+	@SuppressWarnings("unchecked")
+	protected <T> List<T> findByQueryString(String queryString, int firstResult, int maxResults, Object... params) {
+		return this.basicDao.find(queryString, firstResult, maxResults, params);		
+	}
+	
+	@SuppressWarnings("unchecked")
+	protected Object findByQueryStringSingle(String queryString, Object... params){
+		return this.basicDao.findSingle(queryString, params);		
 	}
 	
 	/* (non-Javadoc)

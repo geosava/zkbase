@@ -47,8 +47,10 @@
 
 	<bean id="roleService" class="org.zkbase.service.RoleService" />
 
-	<bean id="userController" class="org.zkbase.webapp.controller.UserController"
+	<bean id="userController" class="org.zkbase.webapp.composer.UserController"
 		scope="prototype" />
 
+	<bean id="userComposer" class="org.zkbase.webapp.composer.UserComposer"
+		scope="prototype" />
 
 </beans>

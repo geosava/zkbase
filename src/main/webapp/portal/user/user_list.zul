@@ -1,0 +1,18 @@
+<zk xmlns="http://www.zkoss.org/2005/zul">
+	<window title="User List" border="normal"
+		apply="org.zkbase.webapp.composer.GenUserListComposer">
+		<textbox id="glc_searchField" />
+		<button id="search" label="search" />
+		<paging id="glc_page" pageSize="15" />
+		<listbox id="glc_listbox">
+			<listhead>
+				<listheader label="first name" />
+				<listheader label="last name" />
+			</listhead>
+		</listbox>
+		<hbox>
+			<button id="insert" label="insert" />
+			<button id="edit" label="edit" />
+		</hbox>
+	</window>
+</zk>
