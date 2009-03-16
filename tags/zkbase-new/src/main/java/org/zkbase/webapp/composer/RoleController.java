@@ -1,4 +1,4 @@
-package org.zkbase.webapp.controller;
+package org.zkbase.webapp.composer;
 
 import java.util.List;
 

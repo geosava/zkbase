@@ -3,11 +3,11 @@
 	<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
 
 	<window title="Initialize users" border="normal"
-		apply="org.zkbase.webapp.controller.UserController">
+		apply="org.zkbase.webapp.composer.UserController">
 		<button id="init" label="Init" width="36px" height="24px" />
 	</window>
 	<window title="User List" border="normal"
-		apply="org.zkbase.webapp.controller.GenUserListComposer">
+		apply="org.zkbase.webapp.composer.GenUserListComposer">
 		<textbox id="glc_searchField" />
 		<button id="search" label="search" />
 		<paging id="glc_page" pageSize="15" />

@@ -1,4 +1,4 @@
-package org.zkbase.webapp.controller;
+package org.zkbase.webapp.component;
 
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.SuspendNotAllowedException;
@@ -13,6 +13,10 @@ public class MainWindow extends Window {
 		System.out.println("Loading file: " + file);
 		Include content = (Include)this.getFellow("content");
 		content.setSrc(file);			
+	}
+	
+	public void addToDesktop() {
+		this.getDesktop().setAttribute("mainWin", this);
 	}
 
 	public void about() {
