@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"	
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+		
+	<!-- BEGIN: Authentication -->
+	<bean id="userDetailsService" class="org.zkbase.service.UserAuthenticationDetailsService" />
+
+	<!--
+	<bean id="userDetailsService"
+		class="org.springframework.security.userdetails.memory.InMemoryDaoImpl">
+		<property name="userMap">
+			<value>
+				<![CDATA[
+					admin=test, ROLE_SALES, ACL_GENERAL_CHANGE
+					user=test, ROLE_CUSTOMER, ACL_GENERAL_CHANGE
+				]]>
+			</value>
+		</property>
+	</bean>-->
+	
+	<bean id="authenticationProviderDAO"
+		class="org.springframework.security.providers.dao.DaoAuthenticationProvider">
+		<property name="userDetailsService" ref="userDetailsService" />
+	</bean>
+	
+	<bean id="authenticationProviderTest"
+		class="org.zkbase.service.TestAuth">
+	</bean>	
+
+	<bean id="authenticationManager"
+		class="org.springframework.security.providers.ProviderManager">
+		<property name="providers" ref="authenticationProviderTest" />
+	</bean>
+
+	<bean id="roleVoter" class="org.springframework.security.vote.RoleVoter" />
+
+	<bean id="accessDecisionManager"
+		class="org.springframework.security.vote.AffirmativeBased">
+		<property name="decisionVoters">
+			<list>
+				<ref local="roleVoter" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="filterSecurityInterceptor"
+		class="org.springframework.security.intercept.web.FilterSecurityInterceptor">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="accessDecisionManager" ref="accessDecisionManager" />
+		<property name="objectDefinitionSource">
+			<value>
+				<![CDATA[
+					CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+					PATTERN_TYPE_APACHE_ANT
+					/portal/**=ROLE_CUSTOMER, ROLE_SALES
+				]]>
+			</value>
+		</property>
+	</bean>
+
+	<bean id="exceptionTranslationFilter"
+		class="org.springframework.security.ui.ExceptionTranslationFilter">
+		<property name="authenticationEntryPoint" ref="authenticationEntryPoint" />
+	</bean>
+
+	<bean id="authenticationEntryPoint"
+		class="org.springframework.security.ui.webapp.AuthenticationProcessingFilterEntryPoint">
+		<property name="loginFormUrl" value="/login.jsp" />
+		<property name="forceHttps" value="false" />
+	</bean>
+
+	<bean id="authenticationProcessingFilter"
+ 		class="org.springframework.security.ui.webapp.AuthenticationProcessingFilter">
+   		<property name="authenticationManager" ref="authenticationManager" />
+        <property name="defaultTargetUrl" value="/portal/index.zul" />	
+   		<property name="authenticationFailureUrl" value="/login.jsp" />
+	</bean>
+
+	<bean id="httpSessionIntegrationFilter"
+ 		class="org.springframework.security.context.HttpSessionContextIntegrationFilter"/>
+
+	<bean id="filterChainProxy"
+		class="org.springframework.security.util.FilterChainProxy">
+		<property name="filterInvocationDefinitionSource">
+			<value>
+				<![CDATA[
+					CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+					PATTERN_TYPE_APACHE_ANT 
+					/**=httpSessionIntegrationFilter, authenticationProcessingFilter, exceptionTranslationFilter, filterSecurityInterceptor
+				]]>
+			</value>
+		</property>
+	</bean>
+	<!-- END: Authentication -->		
+
+</beans>
