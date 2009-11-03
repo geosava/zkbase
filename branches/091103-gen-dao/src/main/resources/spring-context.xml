@@ -37,23 +37,29 @@
 	<bean
 		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
 
+	<!-- Generic DAO -->
+	<bean id="searchProcessor" class="com.trg.search.jpa.JPASearchProcessor">
+		<constructor-arg ref="metadataUtil" />
+	</bean>
 
-	<!-- DAOs -->
-	<bean id="basicDao" class="org.zkbase.dao.BasicDao" />
+	<bean id="metadataUtil" class="com.trg.search.jpa.hibernate.HibernateMetadataUtil"
+		factory-method="getInstanceForEntityManagerFactory">
+		<constructor-arg ref="entityManagerFactory" />
+	</bean>
 
-	<bean id="userService" class="org.zkbase.service.UserService" />
-
-	<bean id="userAuthenticationDetailsService" class="org.zkbase.service.UserAuthenticationDetailsService" />
-
+	<bean id="roleDao" class="org.zkbase.dao.RoleDao" />
 	<bean id="roleService" class="org.zkbase.service.RoleService" />
-	
-	<bean id="meetingService" class="org.zkbase.service.MeetingService" />
-
-	<bean id="userController" class="org.zkbase.webapp.controller.UserController"
-		scope="prototype" />
-		
-	<bean id="meetingModel" class="org.zkbase.webapp.model.MeetingModel" />
-	
-	<bean id="userModel" class="org.zkbase.webapp.model.UserModel" />
-
+	<!-- DAOs -->
+	<!--
+		<bean id="baseDao" class="org.zkbase.dao.BaseDao" /> <bean
+		id="userService" class="org.zkbase.service.UserService" /> <bean
+		id="userAuthenticationDetailsService"
+		class="org.zkbase.service.UserAuthenticationDetailsService" /> <bean
+		id="meetingService" class="org.zkbase.service.MeetingService" /> <bean
+		id="userController"
+		class="org.zkbase.webapp.controller.UserController" scope="prototype"
+		/> <bean id="meetingModel"
+		class="org.zkbase.webapp.model.MeetingModel" /> <bean id="userModel"
+		class="org.zkbase.webapp.model.UserModel" />
+	-->
 </beans>
