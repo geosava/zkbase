@@ -211,6 +211,30 @@
 			<version>2.4.1</version>
 		</dependency>
 
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.4.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.trg</groupId>
+			<artifactId>trg-dao</artifactId>
+			<version>0.5.0</version> <!-- or whatever the latest version is -->
+		</dependency>
+
+		<dependency>
+			<groupId>com.trg</groupId>
+			<artifactId>trg-search-jpa-hibernate</artifactId>
+			<version>0.5.0</version> <!-- or whatever the latest version is -->
+		</dependency>
+
+		<dependency>
+			<groupId>genjava</groupId>
+			<artifactId>gj-csv</artifactId>
+			<version>1.0</version>
+		</dependency>
+		
 	</dependencies>
 	<build>
 		<finalName>zkbase</finalName>
@@ -248,7 +272,14 @@
 		</resources>
 	</build>
 
-
+	<repositories>
+		<repository>
+			<id>trg-dao-repo</id>
+			<name>Repository for The Revere Group's Hibernate Generic
+			DAO framework</name>
+			<url>http://hibernate-generic-dao.googlecode.com/svn/trunk/maven-repo/</url>
+		</repository>
+	</repositories>
 	<profiles>
 		<!-- Database profiles -->
 		<profile>
