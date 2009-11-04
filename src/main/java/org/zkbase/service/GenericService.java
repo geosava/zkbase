@@ -1,15 +1,15 @@
 package org.zkbase.service;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
-
-import javax.management.relation.Role;
 
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.zkbase.dao.BaseDao;
 
-import com.trg.search.ISearch;
+import com.trg.search.ExampleOptions;
+import com.trg.search.Filter;
 import com.trg.search.Search;
 
 @Transactional(readOnly=true,propagation = Propagation.REQUIRED)
@@ -19,7 +19,6 @@ public abstract class GenericService<T>  {
 	
 	public GenericService(BaseDao baseDao){
 		this.baseDao = baseDao;
-		//this.objectClass = objectClass;
 	}	
 	
 	public GenericService() {
@@ -40,29 +39,6 @@ public abstract class GenericService<T>  {
 		return(List<T>) this.baseDao.findAll();
 	}
 	
-	/* (non-Javadoc)
-	 * @see org.zkbase.service.BaseService#findAll(int, int)
-	 */
-//	@SuppressWarnings("unchecked")
-//	public List<T> findAll(int firstResult, int maxResults) {
-//		List<?> objects = this.baseDao.findAll(objectClass, firstResult,
-//				maxResults);
-//		return (List<T>) objects;
-//	}
-//
-//	@SuppressWarnings("unchecked")
-//	protected <T> List<T> findByNamedQuery(String namedQuery, int firstResult,
-//			int maxResults, Object... params) {
-//		return this.baseDao.findNamedQuery(namedQuery, firstResult, maxResults,
-//				params);
-//	}
-//
-//	@SuppressWarnings("unchecked")
-//	protected Object findByNamedQuerySingle(String namedQuery, Object... params) {
-//		return this.baseDao.findNamedQuerySingle(namedQuery, params);
-//	}
-//
-
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public void persist(T object) {
 		this.baseDao.persist(object);
@@ -78,9 +54,18 @@ public abstract class GenericService<T>  {
 		this.baseDao.merge(object);
 	}
 
-//	abstract public List<T> findByExample(T example, int firstResult,
-//			int maxResults);
-//
-//	abstract public Long countByExample(T example);	
+	public List<T> findByExample(T example) {
+		ExampleOptions eo = new ExampleOptions();
+		eo.setLikeMode(ExampleOptions.ANYWHERE);
+		eo.setIgnoreCase(true);
+		Filter filter = this.baseDao.getFilterFromExample(example, eo);
+		filter.setOperator(Filter.OP_OR);
+		Search search = new Search();
+		List<Filter> filterList = new ArrayList<Filter>();
+		filterList.add(filter);
+		search.setFilters(filterList);
+		return (List<T>)this.baseDao.search(search);
+	}
+
 
 }
