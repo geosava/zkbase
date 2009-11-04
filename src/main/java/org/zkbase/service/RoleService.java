@@ -12,17 +12,4 @@ public class RoleService extends GenericService<Role> {
 	public RoleService() {
 		// needed for aop cglib 
 	}
-
-//	@Override
-//	public List<Role> findByExample(Role example, int firstResult,
-//			int maxResults) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
-//	public Long countByExample(Role example) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
 }

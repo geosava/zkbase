@@ -34,7 +34,8 @@ public abstract class GenericService<T>  {
 		return (T) baseDao.find(id);
 	}
 
-	@SuppressWarnings("unchecked")	
+	@SuppressWarnings("unchecked")
+	// TODO consider paging
 	public List<T> findAll(){
 		return(List<T>) this.baseDao.findAll();
 	}
@@ -54,6 +55,7 @@ public abstract class GenericService<T>  {
 		this.baseDao.merge(object);
 	}
 
+	// TODO consider paging
 	public List<T> findByExample(T example) {
 		ExampleOptions eo = new ExampleOptions();
 		eo.setLikeMode(ExampleOptions.ANYWHERE);
