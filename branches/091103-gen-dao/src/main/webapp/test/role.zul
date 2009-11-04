@@ -1,0 +1,35 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="roleWin" title="Role" border="normal"
+		apply="org.zkbase.webapp.composer.RoleComposer">
+		<hbox>
+			<groupbox>
+				<caption label="Add Role" />
+				<vbox>
+					name:
+					<textbox id="name" />
+					description:
+					<textbox id="description" />
+					<button id="add" label="save" />
+				</vbox>
+			</groupbox>
+
+			<groupbox>
+				<caption label="Search Role" />
+				query:
+				<textbox id="searchQuery" />
+				<button id="search" label="search" />
+			</groupbox>
+		</hbox>
+
+
+		<listbox id="roleList">
+			<listhead>
+				<listheader label="name" />
+				<listheader label="description" />
+			</listhead>
+		</listbox>
+	</window>
+</zk>

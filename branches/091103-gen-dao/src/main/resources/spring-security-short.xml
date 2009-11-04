@@ -7,7 +7,7 @@
 		http://www.springframework.org/schema/security
 		http://www.springframework.org/schema/security/spring-security-2.0.xsd">
 
-	<!-- BEGIN: Authentication -->
+	<!-- BEGIN: Authentication --><!--
 	
 	<sec:http auto-config="true">
 		<sec:intercept-url pattern="/portal/**"
@@ -21,6 +21,6 @@
 		user-service-ref="userAuthenticationDetailsService">
 	</sec:authentication-provider>
 	
-	<!-- END: Authentication -->
+	--><!-- END: Authentication -->
 
 </beans>

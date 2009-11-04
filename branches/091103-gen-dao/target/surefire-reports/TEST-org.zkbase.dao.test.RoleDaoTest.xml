@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="3.796" errors="0" skipped="0" tests="4" name="org.zkbase.dao.test.RoleDaoTest">
+<testsuite failures="0" time="4.282" errors="0" skipped="0" tests="4" name="org.zkbase.dao.test.RoleDaoTest">
   <properties>
     <property name="java.vendor" value="Sun Microsystems Inc."/>
+    <property name="env.SYSTEMROOT" value="C:\WINDOWS"/>
     <property name="localRepository" value="C:\lib\.m2\repository"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.management.compiler" value="HotSpot Client Compiler"/>
@@ -17,7 +18,9 @@
     <property name="env.HOMEPATH" value="\Dokumente und Einstellungen\ppo"/>
     <property name="user.name" value="ppo"/>
     <property name="env.QTJAVA" value="C:\Programme\Java\jre6\lib\ext\QTJava.zip"/>
+    <property name="env.PATH" value="C:\Programme\Java\jdk1.6.0_10\jre\bin;C:\oracle\product\10.2.0\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Programme\Intel\Wireless\Bin;C:\bin\apache-maven\bin;C:\Programme\TortoiseSVN\bin;C:\Programme\MySQL\MySQL Server 5.0\bin;C:\PROGRA~1\ULTRAE~1;C:\Programme\QuickTime\QTSystem\;C:\Programme\IDM Computer Solutions\UltraEdit-32;C:\bin\apache-ant-1.7.1\bin;C:\Programme\Microsoft SQL Server\80\Tools\Binn\;C:\Programme\MiKTeX 2.7\miktex\bin;C:\Programme\IDM Computer Solutions\UltraCompare"/>
     <property name="user.language" value="de"/>
+    <property name="env.WINDIR" value="C:\WINDOWS"/>
     <property name="sun.boot.library.path" value="C:\Programme\Java\jdk1.6.0_10\jre\bin"/>
     <property name="java.version" value="1.6.0_10"/>
     <property name="env.PROCESSOR_IDENTIFIER" value="x86 Family 6 Model 15 Stepping 6, GenuineIntel"/>
@@ -30,16 +33,15 @@
     <property name="env.HOMEDRIVE" value="C:"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
     <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="env.SYSTEMDRIVE" value="C:"/>
     <property name="file.separator" value="\"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="50.0"/>
     <property name="user.country" value="AT"/>
     <property name="java.home" value="C:\Programme\Java\jdk1.6.0_10\jre"/>
     <property name="env.APPDATA" value="C:\Dokumente und Einstellungen\ppo\Anwendungsdaten"/>
-    <property name="java.vm.info" value="mixed mode, sharing"/>
-    <property name="env.ComSpec" value="C:\WINDOWS\system32\cmd.exe"/>
+    <property name="java.vm.info" value="mixed mode"/>
     <property name="env.OS" value="Windows_NT"/>
-    <property name="env.CommonProgramFiles" value="C:\Programme\Gemeinsame Dateien"/>
     <property name="os.version" value="5.1"/>
     <property name="path.separator" value=";"/>
     <property name="java.vm.version" value="11.0-b15"/>
@@ -48,14 +50,16 @@
     <property name="env.JAVA_HOME" value="C:\Programme\Java\jdk1.6.0_10"/>
     <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
     <property name="env.TMP" value="C:\DOKUME~1\ppo\LOKALE~1\Temp"/>
+    <property name="env.PROGRAMFILES" value="C:\Programme"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
     <property name="user.home" value="C:\Dokumente und Einstellungen\ppo"/>
+    <property name="env.COMMONPROGRAMFILES" value="C:\Programme\Gemeinsame Dateien"/>
     <property name="env.SESSIONNAME" value="Console"/>
     <property name="java.specification.vendor" value="Sun Microsystems Inc."/>
     <property name="env.CLASSPATH" value=".;C:\Programme\Java\jre6\lib\ext\QTJava.zip"/>
     <property name="env.NUMBER_OF_PROCESSORS" value="2"/>
-    <property name="java.library.path" value="C:\Programme\Java\jdk1.6.0_10\bin;.;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\oracle\product\10.2.0\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Programme\Intel\Wireless\Bin;C:\bin\apache-maven\bin;C:\Programme\TortoiseSVN\bin;C:\Programme\MySQL\MySQL Server 5.0\bin;C:\PROGRA~1\ULTRAE~1;C:\Programme\QuickTime\QTSystem\;C:\Programme\IDM Computer Solutions\UltraEdit-32;C:\bin\apache-ant-1.7.1\bin;C:\Programme\Microsoft SQL Server\80\Tools\Binn\;C:\Programme\MiKTeX 2.7\miktex\bin;C:\Programme\IDM Computer Solutions\UltraCompare"/>
+    <property name="java.library.path" value="C:\Programme\Java\jdk1.6.0_10\bin;.;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Programme\Java\jdk1.6.0_10\jre\bin;C:\oracle\product\10.2.0\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Programme\Intel\Wireless\Bin;C:\bin\apache-maven\bin;C:\Programme\TortoiseSVN\bin;C:\Programme\MySQL\MySQL Server 5.0\bin;C:\PROGRA~1\ULTRAE~1;C:\Programme\QuickTime\QTSystem\;C:\Programme\IDM Computer Solutions\UltraEdit-32;C:\bin\apache-ant-1.7.1\bin;C:\Programme\Microsoft SQL Server\80\Tools\Binn\;C:\Programme\MiKTeX 2.7\miktex\bin;C:\Programme\IDM Computer Solutions\UltraCompare"/>
     <property name="java.vendor.url" value="http://java.sun.com/"/>
     <property name="env.USERDNSDOMAIN" value="HLECHNER.LOCAL"/>
     <property name="java.vm.vendor" value="Sun Microsystems Inc."/>
@@ -64,17 +68,15 @@
     <property name="java.class.path" value="/C:/Programme/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/aspectjrt-1.5.3.jar;/C:/Programme/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/commons-cli-1.0.jar;/C:/Programme/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/doxia-sink-api-1.0-alpha-9.jar;/C:/Programme/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/jsch-0.1.27.jar;/C:/Programme/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/jtidy-4aug2000r7-dev.jar;/C:/Programme/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/maven-artifact-3.0-SNAPSHOT.jar;/C:/Programme/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/maven-core-2.1-SNAPSHOT.jar;/C:/Programme/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/maven-embedder-2.1-SNAPSHOT.jar;/C:/Programme/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/maven-lifecycle-2.1-SNAPSHOT.jar;/C:/Programme/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/maven-model-2.1-SNAPSHOT.jar;/C:/Programme/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/maven-plugin-api-2.1-SNAPSHOT.jar;/C:/Programme/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/maven-profile-2.1-SNAPSHOT.jar;/C:/Programme/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/maven-project-2.1-SNAPSHOT.jar;/C:/Programme/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/maven-reporting-api-2.1-SNAPSHOT.jar;/C:/Programme/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/maven-toolchain-2.1-SNAPSHOT.jar;/C:/Programme/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/maven-workspace-2.1-SNAPSHOT.jar;/C:/Programme/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/plexus-classworlds-1.2-alpha-12.jar;/C:/Programme/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/plexus-container-default-1.0-alpha-44.jar;/C:/Programme/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/plexus-interactivity-api-1.0-alpha-6.jar;/C:/Programme/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/plexus-interpolation-1.0-SNAPSHOT.jar;/C:/Programme/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/plexus-utils-1.5.1.jar;/C:/Programme/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/wagon-file-1.0-beta-2.jar;/C:/Programme/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/wagon-http-lightweight-1.0-beta-2.jar;/C:/Programme/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/wagon-http-shared-1.0-beta-2.jar;/C:/Programme/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/wagon-provider-api-1.0-beta-2.jar;/C:/Programme/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/wagon-ssh-1.0-beta-2.jar;/C:/Programme/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/wagon-ssh-common-1.0-beta-2.jar;/C:/Programme/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/wagon-ssh-external-1.0-beta-2.jar"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="env.LOGONSERVER" value="\\HLW-BACKUP"/>
-    <property name="env.windir" value="C:\WINDOWS"/>
     <property name="java.vm.specification.version" value="1.0"/>
     <property name="env.PROCESSOR_ARCHITECTURE" value="x86"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.os.patch.level" value="Service Pack 3"/>
     <property name="surefire.test.class.path" value="C:\projects\test\workspace\zkbase-gen-dao\target\test-classes;C:\projects\test\workspace\zkbase-gen-dao\target\classes;C:\lib\.m2\repository\log4j\log4j\1.2.13\log4j-1.2.13.jar;C:\lib\.m2\repository\commons-logging\commons-logging\1.0.4\commons-logging-1.0.4.jar;C:\lib\.m2\repository\commons-fileupload\commons-fileupload\1.2.1\commons-fileupload-1.2.1.jar;C:\lib\.m2\repository\commons-io\commons-io\1.4\commons-io-1.4.jar;C:\lib\.m2\repository\org\springframework\spring-test\2.5.5\spring-test-2.5.5.jar;C:\lib\.m2\repository\junit\junit\3.8.1\junit-3.8.1.jar;C:\lib\.m2\repository\org\springframework\spring\2.5.5\spring-2.5.5.jar;C:\lib\.m2\repository\org\zkoss\zk\zk\3.6.1\zk-3.6.1.jar;C:\lib\.m2\repository\org\zkoss\common\zcommon\3.6.1\zcommon-3.6.1.jar;C:\lib\.m2\repository\org\zkoss\zkforge\el\zcommons-el\1.0.1\zcommons-el-1.0.1.jar;C:\lib\.m2\repository\org\zkoss\common\zweb\3.6.1\zweb-3.6.1.jar;C:\lib\.m2\repository\org\zkoss\zk\zkplus\3.6.1\zkplus-3.6.1.jar;C:\lib\.m2\repository\org\zkoss\zk\zul\3.6.1\zul-3.6.1.jar;C:\lib\.m2\repository\org\zkoss\zk\zhtml\3.6.1\zhtml-3.6.1.jar;C:\lib\.m2\repository\org\zkoss\zk\zkex\3.6.1\zkex-3.6.1.jar;C:\lib\.m2\repository\org\hibernate\hibernate-entitymanager\3.3.2.GA\hibernate-entitymanager-3.3.2.GA.jar;C:\lib\.m2\repository\org\hibernate\hibernate\3.2.6.ga\hibernate-3.2.6.ga.jar;C:\lib\.m2\repository\net\sf\ehcache\ehcache\1.2.3\ehcache-1.2.3.jar;C:\lib\.m2\repository\commons-collections\commons-collections\3.2\commons-collections-3.2.jar;C:\lib\.m2\repository\asm\asm-attrs\1.5.3\asm-attrs-1.5.3.jar;C:\lib\.m2\repository\dom4j\dom4j\1.6.1\dom4j-1.6.1.jar;C:\lib\.m2\repository\antlr\antlr\2.7.6\antlr-2.7.6.jar;C:\lib\.m2\repository\cglib\cglib\2.1_3\cglib-2.1_3.jar;C:\lib\.m2\repository\asm\asm\1.5.3\asm-1.5.3.jar;C:\lib\.m2\repository\org\hibernate\hibernate-annotations\3.3.1.GA\hibernate-annotations-3.3.1.GA.jar;C:\lib\.m2\repository\org\hibernate\hibernate-commons-annotations\3.0.0.ga\hibernate-commons-annotations-3.0.0.ga.jar;C:\lib\.m2\repository\org\hibernate\ejb3-persistence\1.0.1.GA\ejb3-persistence-1.0.1.GA.jar;C:\lib\.m2\repository\javassist\javassist\3.4.GA\javassist-3.4.GA.jar;C:\lib\.m2\repository\commons-lang\commons-lang\2.4\commons-lang-2.4.jar;C:\lib\.m2\repository\org\beanshell\bsh\2.0b4\bsh-2.0b4.jar;C:\lib\.m2\repository\hsqldb\hsqldb\1.8.0.7\hsqldb-1.8.0.7.jar;C:\lib\.m2\repository\mysql\mysql-connector-java\5.1.6\mysql-connector-java-5.1.6.jar;C:\lib\.m2\repository\commons-dbcp\commons-dbcp\1.2.2\commons-dbcp-1.2.2.jar;C:\lib\.m2\repository\commons-pool\commons-pool\1.3\commons-pool-1.3.jar;C:\lib\.m2\repository\org\apache\geronimo\specs\geronimo-jta_1.0.1B_spec\1.1.1\geronimo-jta_1.0.1B_spec-1.1.1.jar;C:\lib\.m2\repository\jfree\jfreechart\1.0.9\jfreechart-1.0.9.jar;C:\lib\.m2\repository\jfree\jcommon\1.0.12\jcommon-1.0.12.jar;C:\lib\.m2\repository\org\springframework\security\spring-security-acl\2.0.4\spring-security-acl-2.0.4.jar;C:\lib\.m2\repository\org\springframework\security\spring-security-core\2.0.4\spring-security-core-2.0.4.jar;C:\lib\.m2\repository\org\springframework\spring-core\2.0.8\spring-core-2.0.8.jar;C:\lib\.m2\repository\org\springframework\spring-context\2.0.8\spring-context-2.0.8.jar;C:\lib\.m2\repository\aopalliance\aopalliance\1.0\aopalliance-1.0.jar;C:\lib\.m2\repository\org\springframework\spring-beans\2.0.8\spring-beans-2.0.8.jar;C:\lib\.m2\repository\org\springframework\spring-aop\2.0.8\spring-aop-2.0.8.jar;C:\lib\.m2\repository\org\springframework\spring-support\2.0.8\spring-support-2.0.8.jar;C:\lib\.m2\repository\commons-codec\commons-codec\1.3\commons-codec-1.3.jar;C:\lib\.m2\repository\org\springframework\spring-jdbc\2.0.8\spring-jdbc-2.0.8.jar;C:\lib\.m2\repository\org\springframework\spring-dao\2.0.8\spring-dao-2.0.8.jar;C:\lib\.m2\repository\org\springframework\security\spring-security-core-tiger\2.0.4\spring-security-core-tiger-2.0.4.jar;C:\lib\.m2\repository\org\springframework\security\spring-security-taglibs\2.0.4\spring-security-taglibs-2.0.4.jar;C:\lib\.m2\repository\org\springframework\spring-web\2.0.8\spring-web-2.0.8.jar;C:\lib\.m2\repository\net\fckeditor\java-core\2.4.1\java-core-2.4.1.jar;C:\lib\.m2\repository\org\slf4j\slf4j-api\1.5.2\slf4j-api-1.5.2.jar;C:\lib\.m2\repository\org\slf4j\slf4j-log4j12\1.4.2\slf4j-log4j12-1.4.2.jar;C:\lib\.m2\repository\com\trg\trg-dao\0.5.0\trg-dao-0.5.0.jar;C:\lib\.m2\repository\com\trg\trg-search\0.5.0\trg-search-0.5.0.jar;C:\lib\.m2\repository\javax\persistence\persistence-api\1.0\persistence-api-1.0.jar;C:\lib\.m2\repository\com\trg\trg-search-jpa-hibernate\0.5.0\trg-search-jpa-hibernate-0.5.0.jar;C:\lib\.m2\repository\com\trg\trg-search-hibernate\0.5.0\trg-search-hibernate-0.5.0.jar;C:\lib\.m2\repository\org\hibernate\hibernate-core\3.3.1.GA\hibernate-core-3.3.1.GA.jar;C:\lib\.m2\repository\javax\transaction\jta\1.1\jta-1.1.jar;C:\lib\.m2\repository\genjava\gj-csv\1.0\gj-csv-1.0.jar;"/>
-    <property name="env.ProgramFiles" value="C:\Programme"/>
     <property name="java.io.tmpdir" value="C:\DOKUME~1\ppo\LOKALE~1\Temp\"/>
     <property name="env.PROCESSOR_REVISION" value="0f06"/>
     <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi"/>
-    <property name="env.SystemRoot" value="C:\WINDOWS"/>
+    <property name="env.COMSPEC" value="C:\WINDOWS\system32\cmd.exe"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
     <property name="os.arch" value="x86"/>
     <property name="java.ext.dirs" value="C:\Programme\Java\jdk1.6.0_10\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>
@@ -83,18 +85,16 @@
 "/>
     <property name="java.vm.name" value="Java HotSpot(TM) Client VM"/>
     <property name="env.PATHEXT" value=".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH"/>
-    <property name="env.Path" value="C:\oracle\product\10.2.0\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Programme\Intel\Wireless\Bin;C:\bin\apache-maven\bin;C:\Programme\TortoiseSVN\bin;C:\Programme\MySQL\MySQL Server 5.0\bin;C:\PROGRA~1\ULTRAE~1;C:\Programme\QuickTime\QTSystem\;C:\Programme\IDM Computer Solutions\UltraEdit-32;C:\bin\apache-ant-1.7.1\bin;C:\Programme\Microsoft SQL Server\80\Tools\Binn\;C:\Programme\MiKTeX 2.7\miktex\bin;C:\Programme\IDM Computer Solutions\UltraCompare"/>
     <property name="basedir" value="C:\projects\test\workspace\zkbase-gen-dao"/>
     <property name="maven.mode.standalone" value="true"/>
     <property name="env.USERNAME" value="ppo"/>
-    <property name="env.SystemDrive" value="C:"/>
     <property name="file.encoding" value="Cp1252"/>
     <property name="env.USERDOMAIN" value="HLECHNER"/>
     <property name="java.specification.version" value="1.6"/>
     <property name="env.PROCESSOR_LEVEL" value="6"/>
   </properties>
-  <testcase time="3.328" classname="org.zkbase.dao.test.RoleDaoTest" name="testConfig"/>
-  <testcase time="0.031" classname="org.zkbase.dao.test.RoleDaoTest" name="testDataAccess"/>
-  <testcase time="0.094" classname="org.zkbase.dao.test.RoleDaoTest" name="testCRUD"/>
-  <testcase time="0.14" classname="org.zkbase.dao.test.RoleDaoTest" name="testSearch"/>
+  <testcase time="3.766" classname="org.zkbase.dao.test.RoleDaoTest" name="testConfig"/>
+  <testcase time="0.047" classname="org.zkbase.dao.test.RoleDaoTest" name="testDataAccess"/>
+  <testcase time="0.093" classname="org.zkbase.dao.test.RoleDaoTest" name="testCRUD"/>
+  <testcase time="0.157" classname="org.zkbase.dao.test.RoleDaoTest" name="testSearch"/>
 </testsuite>
