@@ -1,0 +1,4 @@
+#Sun Nov 29 18:17:54 CET 2009
+eclipse.preferences.version=1
+visualeditor.custom_web_content_path=/zkbase-gen-dao/src/main/webapp
+visualeditor.custom_zk_package=zk-bin-std-3.6.1

@@ -1,0 +1,45 @@
+<?page title="chart" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="chartPie" border="normal"
+		apply="org.zkbase.webapp.composer.ChartComposer">
+		<flashchart id="chartPie" width="400px" height="300px"
+			type="pie"
+			chartStyle="legend-display=bottom,legend-padding=10,legend-spacing=5,legend-font-family=Arial,legend-font-size=15" />
+	
+
+		<flashchart id="chartStacked" type="bar" />
+		
+		<flashchart id="chartLine" type="line" />
+		
+		<flashchart id="chartColumn" type="column" />
+		
+		<zscript>
+	<![CDATA[
+	import org.zkoss.zul.*;
+	SimpleCategoryModel demoStackedModel = new SimpleCategoryModel();
+	demoStackedModel.setValue("ZSS", "2006", new Integer(123));
+	demoStackedModel.setValue("ZSS", "2007", new Integer(234));
+	demoStackedModel.setValue("ZSS", "2008", new Integer(456));
+	demoStackedModel.setValue("ZSS", "2009", new Integer(567));
+	demoStackedModel.setValue("ZkForum", "2006", new Integer(987));
+	demoStackedModel.setValue("ZkForum", "2007", new Integer(654));
+	demoStackedModel.setValue("ZkForum", "2008", new Integer(543));
+	demoStackedModel.setValue("ZkForum", "2009", new Integer(432));
+	demoStackedModel.setValue("ZkStudio", "2006", new Integer(250));
+	demoStackedModel.setValue("ZkStudio", "2007", new Integer(250));
+	demoStackedModel.setValue("ZkStudio", "2008", new Integer(333));
+	demoStackedModel.setValue("ZkStudio", "2009", new Integer(666));
+	demoStackedModel.setValue("Calendar", "2006", new Integer(710));
+	demoStackedModel.setValue("Calendar", "2007", new Integer(250));
+	demoStackedModel.setValue("Calendar", "2008", new Integer(30));
+	demoStackedModel.setValue("Calendar", "2009", new Integer(800));
+	chartStacked.setModel(demoStackedModel);
+	
+	chartLine.setModel(demoStackedModel);
+	
+	chartColumn.setModel(demoStackedModel);
+	
+]]>
+</zscript>
+	</window>
+</zk>

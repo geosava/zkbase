@@ -8,8 +8,8 @@
 	<name>zkbase</name>
 	<url>http://code.google.com/p/zkbase/</url>
 	<properties>
-		<zk.version>3.6.1</zk.version>
-		<zkel.version>1.0.1</zkel.version>
+		<zk.version>5.0.0-RC2</zk.version>
+		<zkel.version>5.0.0-RC2</zkel.version>
 		<spring.version>2.5.5</spring.version>
 		<spring-security.version>2.0.4</spring-security.version>
 
@@ -34,7 +34,6 @@
 
 	<dependencies>
 		<!--
-
 			<dependency> <groupId>com.oracle</groupId>
 			<artifactId>oracle-driver</artifactId> <version>14</version>
 			</dependency>
@@ -101,16 +100,22 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.zkoss.zk</groupId>
+			<artifactId>zweb</artifactId>
+			<version>${zk.version}</version>
+			<scope>compile</scope>
+		</dependency>		
+		<dependency>
 			<groupId>org.zkoss.common</groupId>
 			<artifactId>zcommon</artifactId>
 			<version>${zk.version}</version>
-		</dependency>
+		</dependency><!--
 		<dependency>
 			<groupId>org.zkoss.zk</groupId>
 			<artifactId>zkex</artifactId>
 			<version>${zk.version}</version>
 		</dependency>
-		<dependency>
+		--><dependency>
 			<groupId>org.zkoss.zkforge.el</groupId>
 			<artifactId>zcommons-el</artifactId>
 			<version>${zkel.version}</version>
